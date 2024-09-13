@@ -1,8 +1,8 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <header className="bg-white bg-opacity-10 text-white p-4">
+    <header className=" text-BLACK p-4">
       <div className="px-8 mx-auto flex justify-between items-center">
         <h1 className="text-2xl font-bold">
           <a href="/">Skincare</a>
