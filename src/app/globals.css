@@ -3,22 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --background: radial-gradient(
-    circle,
-    rgba(238, 174, 202, 1) 0%,
-    rgba(148, 187, 233, 1) 100%
-  );
+  --background: #f4f4f4;
   --foreground: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: radial-gradient(
-      circle,
-      rgb(52, 38, 44) 0%,
-      rgb(73, 105, 142) 100%
-    );
-    --foreground: #ededed;
+    --background: #000000;
+    --foreground: #ffffff;
   }
 }
 
@@ -33,6 +25,7 @@ body {
 
 @layer utilities {
   .text-balance {
-    text-wrap: balance;
+    text-align: justify;
+    text-align-last: balance;
   }
 }
