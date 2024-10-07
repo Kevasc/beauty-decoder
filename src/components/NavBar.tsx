@@ -1,27 +1,33 @@
+"use client";
+
+import React, { useCallback } from "react";
 import Link from "next/link";
+import { slide as Menu } from "react-burger-menu";
 
 const NavBar = () => {
+  const showSettings = useCallback((event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    console.log("Settings clicked");
+  }, []);
+
   return (
-    <header className=" text-BLACK p-4">
-      <div className="px-8 mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold">
-          <a href="/">Skincare</a>
-        </h1>
-        <nav>
-          <ul className="flex gap-8 justify-center">
-            <li>
-              <Link href="/about">About</Link>
-            </li>
-            <li>
-              <Link href="/routine-builder">Routine Builder</Link>
-            </li>
-            <li>
-              <Link href="/compare">Compare</Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <Menu>
+      {/* Use Link directly, no need for <a> tags */}
+      <Link href="/" className="menu-item" id="home">
+        Home
+      </Link>
+      <Link href="/about" className="menu-item" id="about">
+        About
+      </Link>
+      <Link href="/contact" className="menu-item" id="contact">
+        Contact
+      </Link>
+
+      {/* Settings link with an onClick event */}
+      <a onClick={showSettings} className="menu-item--small" href="">
+        Settings
+      </a>
+    </Menu>
   );
 };
 
