@@ -5,15 +5,14 @@ const Homepage = () => {
   return (
     <div>
       <div className="container flex flex-col items-center justify-center mt-52 h-80 mx-auto my-4 p-4 ">
-        <h1 className="font-bebas text-9xl font-bold tracking-widest">
+        <h1 className="font-bebas text-9xl font-bold tracking-widest mt-9">
           BEAUTY
         </h1>
         <p className="font-bebas text-9xl font-bold tracking-widest">DECODER</p>
-
-        <Image src={Shelfie} alt="Shelfie with no brands" />
-        {/* <p className="font-bebas text-2xl font-normal flex items-center m-2 justify-center ">
+        <p className="font-bebas text-2xl font-normal flex items-center m-2 mt-4 mb-9 justify-center ">
           A simple skincare ingredients comparison website
-        </p> */}
+        </p>
+        <Image src={Shelfie} alt="Shelfie with no brands" />
       </div>
     </div>
   );
