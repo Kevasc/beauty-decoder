@@ -9,8 +9,8 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "Skincare",
-  description: "A tool to find the right skincare for you",
+  title: "Beauty Decoder",
+  description: "A tool to find the right beauty products for you",
 };
 
 export default function RootLayout({
