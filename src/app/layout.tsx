@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bebas_Neue } from "@next/font/google";
 import "./globals.css";
+import ClientLayout from "./client.layout";
 
 // Load the Google Font with specific configurations
 const bebasNeue = Bebas_Neue({
@@ -21,7 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={bebasNeue.className}>
       <head />
-      <body>{children}</body>
+
+      <body>
+        <ClientLayout>{children}</ClientLayout>
+      </body>
     </html>
   );
 }
