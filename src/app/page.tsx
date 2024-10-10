@@ -1,12 +1,11 @@
+import BurgerMenu from "@/components/BurgerMenu";
 import Homepage from "@/components/Homepage";
-import NavBar from "@/components/NavBar";
-
 
 export default function Home() {
   return (
     <div>
-      <NavBar />
-      <Homepage/>
+      <BurgerMenu />
+      <Homepage />
     </div>
   );
 }
