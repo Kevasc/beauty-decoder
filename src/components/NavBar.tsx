@@ -49,8 +49,9 @@ const styles = {
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <span>
+    <span data-testid="nav_bar_container">
       <Menu
+        id="menu_container"
         styles={styles}
         isOpen={isOpen}
         onStateChange={(state) => setIsOpen(state.isOpen)}
