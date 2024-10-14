@@ -1,16 +1,16 @@
 "use client";
 
 const productTypeArray = [
-  "Blush",
-  "Bronzer",
-  "Eyebrow",
-  "Eyeliner",
-  "Eyeshadow",
-  "Foundation",
-  "Lip Liner",
-  "Lipstick",
-  "Mascara",
-  "Nail Polish",
+  { name: "Blush", img: "" },
+  { name: "Bronzer", img: "" },
+  { name: "Eyebrow", img: "" },
+  { name: "Eyeliner", img: "" },
+  { name: "Eyeshadow", img: "" },
+  { name: "Foundation", img: "" },
+  { name: "Lip Liner", img: "" },
+  { name: "Lipstick", img: "" },
+  { name: "Mascara", img: "" },
+  { name: "Nail Polish", img: "" },
 ];
 
 const Decoder = () => {
@@ -22,7 +22,8 @@ const Decoder = () => {
       >
         {/* <img className="w-full h-48 object-cover rounded-t" src={`/img/${product.toLowerCase().replace(" ", "-")}.jpg`} alt={`${product}`} /> */}
         <div className="px-6 py-10 flex justify-center ">
-          <p className="font-bold text-xl ">{product}</p>
+          <p>{product.img}</p>
+          <p className="font-bold text-xl ">{product.name}</p>
         </div>
       </div>
     );
