@@ -1,16 +1,28 @@
 "use client";
 
+import Image from "next/image";
+import Blush from "../img/Blush.png";
+import Bronzer from "../img/Bronzer.png";
+import Eyebrow from "../img/Eyebrow.png";
+import Eyeliner from "../img/Eyeliner.png";
+import Eyeshadow from "../img/Eyeshadow.png";
+import Foundation from "../img/Foundation.png";
+import LipLiner from "../img/LipLiner.png";
+import Lipstick from "../img/Lipstick.png";
+import Mascara from "../img/Mascara.png";
+import NailPolish from "../img/NailPolish.png";
+
 const productTypeArray = [
-  { name: "Blush", img: "" },
-  { name: "Bronzer", img: "" },
-  { name: "Eyebrow", img: "" },
-  { name: "Eyeliner", img: "" },
-  { name: "Eyeshadow", img: "" },
-  { name: "Foundation", img: "" },
-  { name: "Lip Liner", img: "" },
-  { name: "Lipstick", img: "" },
-  { name: "Mascara", img: "" },
-  { name: "Nail Polish", img: "" },
+  { name: "Blush", img: Blush },
+  { name: "Bronzer", img: Bronzer },
+  { name: "Eyebrow", img: Eyebrow },
+  { name: "Eyeliner", img: Eyeliner },
+  { name: "Eyeshadow", img: Eyeshadow },
+  { name: "Foundation", img: Foundation },
+  { name: "Lip Liner", img: LipLiner },
+  { name: "Lipstick", img: Lipstick },
+  { name: "Mascara", img: Mascara },
+  { name: "Nail Polish", img: NailPolish },
 ];
 
 const Decoder = () => {
@@ -18,12 +30,13 @@ const Decoder = () => {
     return (
       <div
         key={index}
-        className="shadow-lg rounded transition-transform transform hover:scale-105"
+        className="shadow-lg rounded transition-transform transform hover:scale-105 bg-pink-300"
       >
-        {/* <img className="w-full h-48 object-cover rounded-t" src={`/img/${product.toLowerCase().replace(" ", "-")}.jpg`} alt={`${product}`} /> */}
-        <div className="px-6 py-10 flex justify-center ">
-          <p>{product.img}</p>
-          <p className="font-bold text-xl ">{product.name}</p>
+        <div className="bg-white p-3 flex rounded justify-center">
+          <Image width={100} src={product.img} alt={product.name} />
+        </div>
+        <div className="py-5 flex justify-center ">
+          <p className="font-bold text-2xl ">{product.name}</p>
         </div>
       </div>
     );
