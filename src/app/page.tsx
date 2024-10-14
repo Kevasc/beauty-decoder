@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Shelfie from "../app/img/Shelfie.jpg";
+import Shelfie from "./img/Shelfie.jpg";
 
 const Homepage = () => {
   return (
