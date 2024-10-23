@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Blush from "../img/Blush.png";
 import Bronzer from "../img/Bronzer.png";
 import Eyebrow from "../img/Eyebrow.png";
@@ -12,21 +12,27 @@ import Lipstick from "../img/Lipstick.png";
 import Mascara from "../img/Mascara.png";
 import NailPolish from "../img/NailPolish.png";
 
-const productTypeArray = [
-  { name: "Blush", img: Blush, color: "#F58F29" },
-  { name: "Bronzer", img: Bronzer, color: "#712f79" },
-  { name: "Eyebrow", img: Eyebrow, color: "#4C4C9D" },
+type Product = {
+  name: string;
+  img: StaticImageData;
+  color: string;
+};
+
+const productArray: Product[] = [
+  { name: "Blush", img: Blush, color: "#FFE787" },
+  { name: "Bronzer", img: Bronzer, color: "#FFB7C3" },
+  { name: "Eyebrow", img: Eyebrow, color: "#717EC3" },
   { name: "Eyeliner", img: Eyeliner, color: "#5BC0BE" },
   { name: "Eyeshadow", img: Eyeshadow, color: "#EE4266" },
-  { name: "Foundation", img: Foundation, color: "#EE4266" },
-  { name: "Lip Liner", img: LipLiner, color: "#5BC0BE" },
-  { name: "Lipstick", img: Lipstick, color: "#4C4C9D" },
-  { name: "Mascara", img: Mascara, color: "#712f79" },
-  { name: "Nail Polish", img: NailPolish, color: "#F58F29" },
+  { name: "Foundation", img: Foundation, color: "#FFE787" },
+  { name: "Lip Liner", img: LipLiner, color: "#FFB7C3" },
+  { name: "Lipstick", img: Lipstick, color: "#717EC3" },
+  { name: "Mascara", img: Mascara, color: "#5BC0BE" },
+  { name: "Nail Polish", img: NailPolish, color: "#EE4266" },
 ];
 
-const Decoder = () => {
-  const productCards = productTypeArray.map((product, index) => {
+const Decoder: React.FC = () => {
+  const productCards = productArray.map((product, index) => {
     return (
       <div
         key={index}
