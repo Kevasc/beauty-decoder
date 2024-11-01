@@ -61,7 +61,7 @@ const NavBar = () => {
           onClick={() => {
             setIsOpen(false);
           }}
-          className="menu-item"
+          className="menu-item font-mono  text-fuchsia-900"
           id="home"
         >
           Home
@@ -71,7 +71,7 @@ const NavBar = () => {
           onClick={() => {
             setIsOpen(false);
           }}
-          className="menu-item"
+          className="menu-item font-mono  text-fuchsia-900"
           id="decoder"
         >
           Decoder
@@ -81,7 +81,7 @@ const NavBar = () => {
           onClick={() => {
             setIsOpen(false);
           }}
-          className="menu-item"
+          className="menu-item font-mono  text-fuchsia-900"
           id="about"
         >
           About
