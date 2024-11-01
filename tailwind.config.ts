@@ -11,6 +11,9 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        purple: {
+          main: "#b970a5",
+        },
       },
       fontFamily: {
         bebas: ["Bebas Neue", "sans-serif"],
