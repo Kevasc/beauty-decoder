@@ -1,7 +1,7 @@
 "use client";
-
-import React, { useEffect, useState } from "react";
-import Image, { StaticImageData } from "next/image";
+//The useState hook allows functional components to manage local state
+import React, { useState } from "react";
+import { StaticImageData } from "next/image";
 import Blush from "../img/Blush.png";
 import Bronzer from "../img/Bronzer.png";
 import Eyebrow from "../img/Eyebrow.png";
@@ -12,14 +12,17 @@ import LipLiner from "../img/LipLiner.png";
 import Lipstick from "../img/Lipstick.png";
 import Mascara from "../img/Mascara.png";
 import NailPolish from "../img/NailPolish.png";
+import { getProducts } from "@/api/api";
+import { ProductDetail } from "@/api/api";
+import { ProductCard } from "@/components/ProductCard";
 
-type Product = {
+export type Product = {
   name: string;
   img: StaticImageData;
   color: string;
 };
 
-const staticProductArray: Product[] = [
+const staticCategoryArray: Product[] = [
   { name: "Blush", img: Blush, color: " #bc70a5" },
   { name: "Bronzer", img: Bronzer, color: "#e97b9b" },
   { name: "Eyebrow", img: Eyebrow, color: "#ff8f88" },
@@ -31,54 +34,36 @@ const staticProductArray: Product[] = [
   { name: "Mascara", img: Mascara, color: "#ffad74" },
   { name: "Nail Polish", img: NailPolish, color: "#ffd168" },
 ];
-
+//The React.FC type annotation specifies that it is a React functional component
 const Decoder: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>(staticProductArray);
-  const [apiData, setApiData] = useState<Product[]>([]);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch(
-          "http://makeup-api.herokuapp.com/api/v1/products.json"
-        );
-        if (response.ok) {
-          const data = await response.json();
-          // Process and map API data to the Product type
-          const apiProducts = data.map((item: any) => ({
-            name: item.name,
-            color: item.color || "#ff8f88", // default color if none
-          }));
-          setApiData(apiProducts);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+  // this initializes as an empty array. The state can hold either an array of ProductDetail, an empty array, or undefined
+  const [productDetailsList, setProductDetailsList] = useState<ProductDetail[] | [] | undefined>([]);
 
-    fetchProducts();
-  }, []);
+  //The getProductsApi function is responsible for fetching product details from an API.
+  const getProductsApi = async (productType: string) => {
+    //This line cleans the product type string by converting it to lowercase and replacing spaces with underscores, to format it for API calls withought affecting how its displayed
+    const cleanedProductType = productType.toLowerCase().replace(" ", "_");
+    //calls the getProducts function with the cleaned product type and waits for the result. This contains product details.
+    const apiResult = await getProducts(cleanedProductType)
+    //This updates the productDetailsList state with the fetched product details from the API
+    setProductDetailsList(apiResult)
+  };
 
-  const productCards = [...products, ...apiData].map((product, index) => (
-    <div
-      key={index}
-      className="shadow-lg transition-transform transform hover:scale-105"
-      style={{ backgroundColor: product.color }}
-    >
-      <div className="bg-white p-3 flex justify-center">
-        {product.img ? (
-          <Image width={100} src={product.img} alt={product.name} />
-        ) : (
-          <div className="text-center font-bold text-black-500">
-            {product.name}
-          </div>
-        )}
-      </div>
-      <div className="py-5 flex justify-center">
-        <p className="font-mono text-2xl">{product.name}</p>
-      </div>
-    </div>
-  ));
+  //the productCards variable by mapping over staticCatergoryArray and returns a product card for each item
+  const productCards = staticCategoryArray.map((product, i) => {
+    return (
+      //productCard gets data from the seperate component page, ProductCard
+      <ProductCard
+        //A unique key for React's reconciliation process using index(i)
+        key={i}
+        //Passing the current product object to the ProductCard
+        product={product}
+        //An inline function that calls getProductsApi with the product's name when the card is clicked
+        onClick={() => getProductsApi(product.name)}
+      />
+    );
+  });
 
   return (
     <div
@@ -98,6 +83,9 @@ const Decoder: React.FC = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
         {productCards}
+      </div>
+      <div>
+        {productDetailsList !== undefined && productDetailsList.length > 0 ? "Data is here" : "Data is not here"}
       </div>
     </div>
   );
