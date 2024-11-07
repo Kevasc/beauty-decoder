@@ -23,7 +23,7 @@ export type Product = {
 };
 
 const staticCategoryArray: Product[] = [
-  { name: "Blush", img: Blush, color: " #bc70a5" },
+  { name: "Blush", img: Blush, color: "#bc70a5" },
   { name: "Bronzer", img: Bronzer, color: "#e97b9b" },
   { name: "Eyebrow", img: Eyebrow, color: "#ff8f88" },
   { name: "Eyeliner", img: Eyeliner, color: "#ffad74" },
@@ -36,18 +36,19 @@ const staticCategoryArray: Product[] = [
 ];
 //The React.FC type annotation specifies that it is a React functional component
 const Decoder: React.FC = () => {
-
   // this initializes as an empty array. The state can hold either an array of ProductDetail, an empty array, or undefined
-  const [productDetailsList, setProductDetailsList] = useState<ProductDetail[] | [] | undefined>([]);
+  const [productDetailsList, setProductDetailsList] = useState<
+    ProductDetail[] | [] | undefined
+  >([]);
 
   //The getProductsApi function is responsible for fetching product details from an API.
   const getProductsApi = async (productType: string) => {
     //This line cleans the product type string by converting it to lowercase and replacing spaces with underscores, to format it for API calls withought affecting how its displayed
     const cleanedProductType = productType.toLowerCase().replace(" ", "_");
     //calls the getProducts function with the cleaned product type and waits for the result. This contains product details.
-    const apiResult = await getProducts(cleanedProductType)
+    const apiResult = await getProducts(cleanedProductType);
     //This updates the productDetailsList state with the fetched product details from the API
-    setProductDetailsList(apiResult)
+    setProductDetailsList(apiResult);
   };
 
   //the productCards variable by mapping over staticCatergoryArray and returns a product card for each item
@@ -66,26 +67,19 @@ const Decoder: React.FC = () => {
   });
 
   return (
-    <div
-      className="min-h-screen flex flex-col items-center justify-center"
-      style={{
-        background:
-          "radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)",
-      }}
-    >
-      <div className="container flex flex-col items-center justify-center mx-auto">
-        <h1 className="font-bebas text-3xl font-bold text-purple-main mt-5">
-          BEAUTY
+    <div className="min-h-screen flex flex-col items-center justify-center bg-purple-50">
+      <div className="container flex flex-col items-center justify-center mx-auto ">
+        <h1 className="font-bebas text-3xl font-bold  text-fuchsia-900 mt-5">
+          BEAUTY DECODER
         </h1>
-        <p className="font-bebas text-3xl font-bold text-purple-main">
-          DECODER
-        </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
         {productCards}
       </div>
       <div>
-        {productDetailsList !== undefined && productDetailsList.length > 0 ? "Data is here" : "Data is not here"}
+        {productDetailsList !== undefined && productDetailsList.length > 0
+          ? "Data is here"
+          : "Data is not here"}
       </div>
     </div>
   );
