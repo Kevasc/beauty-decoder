@@ -9,7 +9,7 @@ interface ProductCardProps {
 export const ProductCard = ({ product, onClick }: ProductCardProps) => {
   return (
     <div
-      className="shadow-lg transition-transform transform hover:scale-105"
+      className="shadow-lg transition-transform transform hover:scale-105 cursor-pointer"
       style={{ backgroundColor: product.color }}
       onClick={onClick}
     >
