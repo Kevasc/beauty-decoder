@@ -15,6 +15,7 @@ import NailPolish from "../img/NailPolish.png";
 import { getProducts } from "@/api/api";
 import { ProductDetail } from "@/api/api";
 import { ProductCard } from "@/components/ProductCard";
+import { DetailsCard } from "@/components/DetailsCard";
 
 export type Product = {
   name: string;
@@ -47,6 +48,14 @@ const Decoder: React.FC = () => {
     const cleanedProductType = productType.toLowerCase().replace(" ", "_");
     //calls the getProducts function with the cleaned product type and waits for the result. This contains product details.
     const apiResult = await getProducts(cleanedProductType);
+    apiResult?.sort((a, b) => {
+      if (a.name > b.name) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+
     //This updates the productDetailsList state with the fetched product details from the API
     setProductDetailsList(apiResult);
   };
@@ -65,9 +74,18 @@ const Decoder: React.FC = () => {
       />
     );
   });
+  //the question mark checks if productDetailsList (an array of product data) exists. If it does, it maps over each product in the list
+  const specificProducts: JSX.Element[] | undefined = productDetailsList?.map(
+    //For each product, it returns a DetailsCard component, passing in makeupDetailData (containing details about that specific product).
+    (product: ProductDetail, i: number): JSX.Element => {
+      //Returns a JSX element for each product
+      //The key attribute is set to i, the index of the product, ensuring each element is uniquely identifiable.
+      return <DetailsCard key={i} makeupDetailData={product} />;
+    }
+  );
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-purple-50">
+    <div className="min-h-screen flex flex-col items-center justify-center ">
       <div className="container flex flex-col items-center justify-center mx-auto ">
         <h1 className="font-bebas text-3xl font-bold  text-fuchsia-900 mt-5">
           BEAUTY DECODER
@@ -76,9 +94,9 @@ const Decoder: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
         {productCards}
       </div>
-      <div>
-        {productDetailsList !== undefined && productDetailsList.length > 0
-          ? "Data is here"
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
+        {specificProducts !== undefined && specificProducts.length > 0
+          ? specificProducts
           : "Data is not here"}
       </div>
     </div>
