@@ -2,7 +2,7 @@ import NavBar from "@/components/NavBar";
 
 const ClientLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <section>
+    <section className="bg-purple-50">
       <NavBar />
       {children}
     </section>

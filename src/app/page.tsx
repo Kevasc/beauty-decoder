@@ -5,8 +5,7 @@ const Homepage = () => {
   return (
     <div
       data-testid="homepage_container"
-      className="min-h-screen flex flex-col items-center justify-center bg-purple-50"
-
+      className="min-h-screen flex flex-col items-center justify-center "
     >
       <div className="container flex flex-col items-center justify-center mx-auto">
         <h1
