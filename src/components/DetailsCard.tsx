@@ -6,18 +6,23 @@ interface DetailsCardProps {
 
 export const DetailsCard = ({ makeupDetailData }: DetailsCardProps) => {
   return (
-    <div className="border h-500 w-500 text-center font-bold text-black-500 bg-zinc-50 shadow-lg transition-transform transform hover:scale-105 cursor-pointer">
-      {makeupDetailData.brand}
+    <div className="border h-500 w-500 text-center font-bold text-black-500 bg-white hover:bg-purple-50 rounded-lg hover:border-fuchsia-900 shadow-lg transition-transform transform hover:scale-105 cursor-pointer p-4">
+      {makeupDetailData.name}
 
-      {makeupDetailData.api_featured_image ? (
+      <div>
+        <p> {makeupDetailData.brand}</p>
+        <p>{makeupDetailData.price}</p>
+      </div>
+      {makeupDetailData.image_link ? (
         <img
           width={100}
           height={100}
-          src={makeupDetailData.image_link}
-          alt={makeupDetailData.name}
+          src={makeupDetailData.api_featured_image}
+          alt={`${makeupDetailData.name}`}
+          className="mx-auto "
         />
       ) : (
-        <div className="text-center font-bold text-black-500">
+        <div className="text-center font-bold text-gray-500">
           {makeupDetailData.name}
         </div>
       )}
