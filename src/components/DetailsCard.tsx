@@ -6,13 +6,9 @@ interface DetailsCardProps {
 
 export const DetailsCard = ({ makeupDetailData }: DetailsCardProps) => {
   return (
-    <div className="border h-500 w-500 text-center font-bold text-black-500 bg-white hover:bg-purple-50 rounded-lg hover:border-fuchsia-900 shadow-lg transition-transform transform hover:scale-105 cursor-pointer p-4">
+    <div className="border h-500 w-500 text-center  font-mono text-black-500 bg-white hover:bg-purple-50 rounded-lg hover:border-fuchsia-900 shadow-lg transition-transform transform hover:scale-105 cursor-pointer p-4">
       {makeupDetailData.name}
 
-      <div>
-        <p> {makeupDetailData.brand}</p>
-        <p>{makeupDetailData.price}</p>
-      </div>
       {makeupDetailData.image_link ? (
         <img
           width={100}
@@ -26,6 +22,15 @@ export const DetailsCard = ({ makeupDetailData }: DetailsCardProps) => {
           {makeupDetailData.name}
         </div>
       )}
+      <div>
+        <p>
+          {makeupDetailData.brand?.charAt(0).toUpperCase() +
+            makeupDetailData.brand?.slice(1) || "Brand not available"}
+        </p>
+      </div>
+      <div>
+        <p>{makeupDetailData.price}</p>
+      </div>
     </div>
   );
 };
