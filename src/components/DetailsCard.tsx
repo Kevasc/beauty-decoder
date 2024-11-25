@@ -5,31 +5,36 @@ interface DetailsCardProps {
 }
 
 export const DetailsCard = ({ makeupDetailData }: DetailsCardProps) => {
-  return (
-    <div className="border h-500 w-500 text-center  font-mono text-black-500 bg-white hover:bg-purple-50 rounded-lg hover:border-fuchsia-900 shadow-lg transition-transform transform hover:scale-105 cursor-pointer p-4">
-      {makeupDetailData.name}
+  const brandLowerCase =
+    makeupDetailData.brand?.toLowerCase() || "Brand not available";
+  const brandFirstLetter = brandLowerCase.charAt(0).toUpperCase();
+  const brandFinalForm = brandFirstLetter + brandLowerCase.slice(1);
 
-      {makeupDetailData.image_link ? (
+  return (
+    <div className="border p-5 text-center font-mono text-black-500 bg-white hover:bg-purple-50 rounded-lg hover:border-fuchsia-900 shadow-lg transition-transform transform hover:scale-105 cursor-pointer ">
+      {makeupDetailData.image_link && (
         <img
-          width={100}
           height={100}
           src={makeupDetailData.api_featured_image}
-          alt={`${makeupDetailData.name}`}
-          className="mx-auto "
+          alt={makeupDetailData.name}
+          className="my-3 mx-auto "
         />
-      ) : (
-        <div className="text-center font-bold text-gray-500">
-          {makeupDetailData.name}
-        </div>
       )}
+      <p>{brandFinalForm}</p>
       <div>
-        <p>
-          {makeupDetailData.brand?.charAt(0).toUpperCase() +
-            makeupDetailData.brand?.slice(1) || "Brand not available"}
+        <p className="p-3">
+          {makeupDetailData.name?.replaceAll(";", "")
+            ? makeupDetailData.name?.charAt(0).toUpperCase() +
+              makeupDetailData.name?.slice(1)
+            : "name"}
         </p>
       </div>
       <div>
-        <p>{makeupDetailData.price}</p>
+        <p className="p-3">
+          {makeupDetailData.price && parseInt(makeupDetailData.price)
+            ? `£${makeupDetailData.price}`
+            : "N/A"}
+        </p>
       </div>
     </div>
   );
