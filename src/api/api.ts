@@ -22,7 +22,7 @@ export const getProducts = async (
 
 export type ProductDetail = {
   api_featured_image: string;
-  brand: string;
+  brand: string | null;
   category: null | string;
   created_at: string;
   currency: null | string;
@@ -30,7 +30,7 @@ export type ProductDetail = {
   id: number;
   image_link: string;
   name: string;
-  price: string;
+  price: string | null;
   price_sign: null | string;
   product_api_url: string;
   product_colors: { hex_value: string; colour_name: string }[];
