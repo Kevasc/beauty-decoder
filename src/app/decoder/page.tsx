@@ -16,6 +16,7 @@ import { getProducts } from "@/api/api";
 import { ProductDetail } from "@/api/api";
 import { ProductCard } from "@/components/ProductCard";
 import { DetailsCard } from "@/components/DetailsCard";
+import Modal from "@/components/Modal";
 
 export type Product = {
   name: string;
@@ -35,12 +36,18 @@ const staticCategoryArray: Product[] = [
   { name: "Mascara", img: Mascara, color: "#ffad74" },
   { name: "Nail Polish", img: NailPolish, color: "#ffd168" },
 ];
+
 //The React.FC type annotation specifies that it is a React functional component
 const Decoder: React.FC = () => {
   // this initializes as an empty array. The state can hold either an array of ProductDetail, an empty array, or undefined
   const [productDetailsList, setProductDetailsList] = useState<
     ProductDetail[] | [] | undefined
   >([]);
+  const [currentProduct, setCurrentProduct] = useState<ProductDetail | null>(
+    null
+  );
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  console.log("current product = ", currentProduct);
 
   //The getProductsApi function is responsible for fetching product details from an API.
   const getProductsApi = async (productType: string) => {
@@ -70,7 +77,9 @@ const Decoder: React.FC = () => {
         //Passing the current product object to the ProductCard
         product={product}
         //An inline function that calls getProductsApi with the product's name when the card is clicked
-        onClick={() => getProductsApi(product.name)}
+        onClick={() => {
+          getProductsApi(product.name);
+        }}
       />
     );
   });
@@ -80,7 +89,16 @@ const Decoder: React.FC = () => {
     (product: ProductDetail, i: number): JSX.Element => {
       //Returns a JSX element for each product
       //The key attribute is set to i, the index of the product, ensuring each element is uniquely identifiable.
-      return <DetailsCard key={i} makeupDetailData={product} />;
+      return (
+        <DetailsCard
+          key={i}
+          makeupDetailData={product}
+          onClick={() => {
+            setCurrentProduct(product);
+            setIsOpen(true);
+          }}
+        />
+      );
     }
   );
 
@@ -99,6 +117,11 @@ const Decoder: React.FC = () => {
           ? specificProducts
           : "Data is not here"}
       </div>
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+        {/* <DetailsModalContent> */}
+        <p>{currentProduct?.description}</p>
+        {/* </DetailsModalContent> */}
+      </Modal>
     </div>
   );
 };
