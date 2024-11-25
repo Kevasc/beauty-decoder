@@ -5,32 +5,31 @@ interface DetailsCardProps {
 }
 
 export const DetailsCard = ({ makeupDetailData }: DetailsCardProps) => {
-  const brandLowerCase =
-    makeupDetailData.brand?.toLowerCase() || "Brand not available";
-  const brandFirstLetter = brandLowerCase.charAt(0).toUpperCase();
-  const brandFinalForm = brandFirstLetter + brandLowerCase.slice(1);
+  const brandUpperCase =
+    makeupDetailData.brand?.toUpperCase() || "Brand not available";
+
+  const nameLowerCase =
+    makeupDetailData.name?.toLowerCase() || "Brand not available";
+  const nameFirstLetter = nameLowerCase.charAt(0).toUpperCase();
+  const nameFinalForm = nameFirstLetter + nameLowerCase.slice(1);
 
   return (
     <div className="border p-5 text-center font-mono text-black-500 bg-white hover:bg-purple-50 rounded-lg hover:border-fuchsia-900 shadow-lg transition-transform transform hover:scale-105 cursor-pointer ">
       {makeupDetailData.image_link && (
         <img
-          height={100}
+          height={150}
+          width={150}
           src={makeupDetailData.api_featured_image}
           alt={makeupDetailData.name}
-          className="my-3 mx-auto "
+          className="my-3 mx-auto"
         />
       )}
-      <p>{brandFinalForm}</p>
+      <div className="p-3 font-semibold">{brandUpperCase}</div>
       <div>
-        <p className="p-3">
-          {makeupDetailData.name?.replaceAll(";", "")
-            ? makeupDetailData.name?.charAt(0).toUpperCase() +
-              makeupDetailData.name?.slice(1)
-            : "name"}
-        </p>
+        <p className="p-3">{nameFinalForm}</p>
       </div>
       <div>
-        <p className="p-3">
+        <p className="p-3  font-semibold">
           {makeupDetailData.price && parseInt(makeupDetailData.price)
             ? `£${makeupDetailData.price}`
             : "N/A"}
