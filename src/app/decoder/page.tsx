@@ -68,7 +68,7 @@ const Decoder: React.FC = () => {
     setProductDetailsList(apiResult);
   };
 
-  //the productCards variable by mapping over staticCatergoryArray and returns a product card for each item
+  //the productCards variable is an array of productCards created by mapping over staticCatergoryArray and returns a product card for each item
   const productCards = staticCategoryArray.map((product, i) => {
     return (
       //productCard gets data from the seperate component page, ProductCard
@@ -110,16 +110,20 @@ const Decoder: React.FC = () => {
           BEAUTY DECODER
         </h1>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
+      <div className="grid m-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
         {productCards}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
         {specificProducts !== undefined && specificProducts.length > 0
           ? specificProducts
-          : "Data is not here"}
+          : "Click a category to learn more"}
       </div>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-        <DetailsModalContent currentProduct={currentProduct} />
+        {currentProduct ? (
+          <DetailsModalContent currentProduct={currentProduct} />
+        ) : (
+          "no product selected"
+        )}
       </Modal>
     </div>
   );
