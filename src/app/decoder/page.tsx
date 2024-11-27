@@ -17,6 +17,7 @@ import { ProductDetail } from "@/api/api";
 import { ProductCard } from "@/components/ProductCard";
 import { DetailsCard } from "@/components/DetailsCard";
 import Modal from "@/components/Modal";
+import DetailsModalContent from "@/components/DetailsModalContent";
 
 export type Product = {
   name: string;
@@ -118,9 +119,7 @@ const Decoder: React.FC = () => {
           : "Data is not here"}
       </div>
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-        {/* <DetailsModalContent> */}
-        <p>{currentProduct?.description}</p>
-        {/* </DetailsModalContent> */}
+        <DetailsModalContent currentProduct={currentProduct} />
       </Modal>
     </div>
   );
