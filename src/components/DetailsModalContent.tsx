@@ -1,19 +1,25 @@
 import { ProductDetail } from "@/api/api";
-
+import { Tooltip as ReactTooltip } from "react-tooltip";
 interface DetailsModalContentProps {
   currentProduct: ProductDetail;
 }
 
 const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
-  const colorSwatch = currentProduct.product_colors.map((color, i) => {
+  const colorSwatch = currentProduct.product_colors.map((color) => {
     return (
-      <div
-        key={i}
-        className={"flex h-10 w-10 border"}
-        style={{ backgroundColor: color.hex_value }}
-      ></div>
+      <div key={color.hex_value} className="flex p-2 items-center">
+        <div
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content={color.colour_name}
+          className="min-h-10 min-w-10 border mr-2 rounded-full"
+          style={{ backgroundColor: color.hex_value }}
+        />
+        <ReactTooltip place="top" effect="solid" id="my-tooltip" />
+      </div>
     );
   });
+
+  //make a like list
   console.log("color swatch", colorSwatch);
   return (
     <div className="p-4 size-auto text-gray-900">
@@ -30,7 +36,7 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
         <p>{currentProduct.brand}</p>
         <p>{currentProduct.name}</p>
         <p>{currentProduct?.description || "No description available."}</p>
-        {colorSwatch}
+        <div className="grid ">{colorSwatch}</div>
         <p>{currentProduct.updated_at}</p>
       </div>
     </div>
