@@ -18,7 +18,7 @@ export const DetailsCard = ({
 
   return (
     <div
-      className="border p-5 text-center font-mono text-black-500 bg-white hover:bg-purple-50 rounded-lg hover:border-fuchsia-900 shadow-lg transition-transform transform hover:scale-105 cursor-pointer "
+      className="border p-5 text-center font-mono text-black-500 bg-white w-full h-full max-h-[80vh] overflow-y-auto hover:bg-purple-50 rounded-lg hover:border-fuchsia-900 shadow-lg transition-transform transform hover:scale-105 cursor-pointer "
       onClick={onClick}
     >
       {makeupDetailData.image_link && (
