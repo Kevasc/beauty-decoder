@@ -1,5 +1,7 @@
 import { ProductDetail } from "@/api/api";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import { DateTime } from "luxon";
+
 interface DetailsModalContentProps {
   currentProduct: ProductDetail;
 }
@@ -19,10 +21,21 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
     );
   });
 
+  // Format dates using Luxon
+  const updatedAt = DateTime.fromISO(currentProduct.updated_at).toLocaleString(
+    DateTime.DATETIME_MED_WITH_WEEKDAY
+  );
+  // Example for creation date (if available)
+  const creationDate = currentProduct.created_at
+    ? DateTime.fromISO(currentProduct.created_at).toLocaleString(
+        DateTime.DATETIME_MED_WITH_WEEKDAY
+      )
+    : null;
+
   //make a like list
-  console.log("color swatch", colorSwatch);
+
   return (
-    <div className="p-4 size-auto text-gray-900">
+    <div className="p-4 text-gray-900 flex-col items-center bg-white rounded-lg max-h-[60vh] overflow-y-auto">
       {currentProduct.image_link && (
         <img
           height={250}
@@ -32,12 +45,16 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
           className="my-3 mx-auto"
         />
       )}
-      <div className="">
+      <div className="items-center gap-4 flex flex-col">
         <p>{currentProduct.brand}</p>
         <p>{currentProduct.name}</p>
         <p>{currentProduct?.description || "No description available."}</p>
-        <div className="grid ">{colorSwatch}</div>
-        <p>{currentProduct.updated_at}</p>
+        <div className="flex flex-wrap justify-center">{colorSwatch}</div>
+
+        <div className="flex flex-col p-3 items-center gap-y-2">
+          <p>Last Updated: {updatedAt}</p>
+          {creationDate && <p>Created On: {creationDate}</p>}
+        </div>
       </div>
     </div>
   );
