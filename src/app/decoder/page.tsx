@@ -118,7 +118,11 @@ const Decoder: React.FC = () => {
           ? specificProducts
           : "Click a category to learn more"}
       </div>
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+      <Modal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        title={currentProduct?.brand || "Brand not available"}
+      >
         {currentProduct ? (
           <DetailsModalContent currentProduct={currentProduct} />
         ) : (
