@@ -1,6 +1,13 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-const Modal = ({ children, isOpen, setIsOpen }) => {
+interface ModalProps {
+  children: ReactNode;
+  isOpen: boolean;
+  setIsOpen: (toggle: boolean) => void;
+  title: string;
+}
+
+const Modal = ({ children, isOpen, setIsOpen, title }: ModalProps) => {
   return (
     <>
       {isOpen ? (
@@ -10,8 +17,8 @@ const Modal = ({ children, isOpen, setIsOpen }) => {
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-center justify-center p-5 border-b border-solid border-blueGray-200 rounded-t">
-                  <h3 className="text-3xl font-semibold">Modal pop up</h3>
+                <div className="flex items-center justify-center p-5   rounded-t">
+                  <h3 className="text-3xl font-semibold">{title}</h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black  float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setIsOpen(false)}

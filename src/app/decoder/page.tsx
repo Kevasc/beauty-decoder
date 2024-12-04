@@ -48,7 +48,6 @@ const Decoder: React.FC = () => {
     null
   );
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  console.log("current product = ", currentProduct);
 
   //The getProductsApi function is responsible for fetching product details from an API.
   const getProductsApi = async (productType: string) => {
