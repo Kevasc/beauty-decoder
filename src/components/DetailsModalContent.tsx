@@ -35,7 +35,9 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
   //make a like list
 
   return (
-    <div className="p-4 text-gray-900 flex-col items-center bg-white rounded-lg max-h-[60vh] overflow-y-auto">
+    <div className=" text-gray-900 flex-col items-center bg-white rounded-lg max-h-[60vh] overflow-y-auto">
+      <h3 className="text-3xl font-semibold">{currentProduct.brand}</h3>
+
       {currentProduct.image_link && (
         <img
           height={250}
@@ -54,6 +56,23 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
           <p>Last Updated: {updatedAt}</p>
           {creationDate && <p>Created On: {creationDate}</p>}
         </div>
+      </div>
+      <div className="flex items-center justify-center bg-white p-6 sticky bottom-4">
+        <button
+          className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded  hover:shadow-lg  mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+        >
+          <a href={currentProduct.website_link} target="_blank">
+            Buy
+          </a>
+        </button>
+        <button
+          className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded hover:shadow-lg   mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+          // onClick={() => setIsOpen(false)}
+        >
+          like
+        </button>
       </div>
     </div>
   );
