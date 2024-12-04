@@ -46,8 +46,7 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
         />
       )}
       <div className="items-center gap-4 flex flex-col">
-        <p>{currentProduct.brand}</p>
-        <p>{currentProduct.name}</p>
+        <p className="font-semibold">{currentProduct.name}</p>
         <p>{currentProduct?.description || "No description available."}</p>
         <div className="flex flex-wrap justify-center">{colorSwatch}</div>
 
