@@ -16,7 +16,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        bebas: ["Bebas Neue", "sans-serif"],
+        bebas: ["Bebas Neue", "sans-serif", "mono"],
       },
     },
   },
