@@ -22,20 +22,19 @@ import DetailsModalContent from "@/components/DetailsModalContent";
 export type Product = {
   name: string;
   img: StaticImageData;
-  color: string;
 };
 
 const staticCategoryArray: Product[] = [
-  { name: "Blush", img: Blush, color: "#bc70a5" },
-  { name: "Bronzer", img: Bronzer, color: "#e97b9b" },
-  { name: "Eyebrow", img: Eyebrow, color: "#ff8f88" },
-  { name: "Eyeliner", img: Eyeliner, color: "#ffad74" },
-  { name: "Eyeshadow", img: Eyeshadow, color: "#ffd168" },
-  { name: "Foundation", img: Foundation, color: "#bc70a5" },
-  { name: "Lip Liner", img: LipLiner, color: "#e97b9b" },
-  { name: "Lipstick", img: Lipstick, color: "#ff8f88" },
-  { name: "Mascara", img: Mascara, color: "#ffad74" },
-  { name: "Nail Polish", img: NailPolish, color: "#ffd168" },
+  { name: "Blush", img: Blush },
+  { name: "Bronzer", img: Bronzer },
+  { name: "Eyebrow", img: Eyebrow },
+  { name: "Eyeliner", img: Eyeliner },
+  { name: "Eyeshadow", img: Eyeshadow },
+  { name: "Foundation", img: Foundation },
+  { name: "Lip Liner", img: LipLiner },
+  { name: "Lipstick", img: Lipstick },
+  { name: "Mascara", img: Mascara },
+  { name: "Nail Polish", img: NailPolish },
 ];
 
 //The React.FC type annotation specifies that it is a React functional component
