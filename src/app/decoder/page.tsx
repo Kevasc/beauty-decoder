@@ -1,5 +1,5 @@
 "use client";
-//The useState hook allows functional components to manage local state
+
 import React, { useState } from "react";
 import { StaticImageData } from "next/image";
 import Blush from "../img/Blush.png";
@@ -18,6 +18,8 @@ import { ProductCard } from "@/components/ProductCard";
 import { DetailsCard } from "@/components/DetailsCard";
 import Modal from "@/components/Modal";
 import DetailsModalContent from "@/components/DetailsModalContent";
+import Image from "next/image";
+import logo from "../img/logo-cropped.png";
 
 export type Product = {
   name: string;
@@ -103,10 +105,8 @@ const Decoder: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center ">
-      <div className="container flex flex-col items-center justify-center mx-auto ">
-        <h1 className="font-bebas text-3xl font-bold  text-fuchsia-900 mt-5">
-          BEAUTY DECODER
-        </h1>
+      <div className="container flex flex-col items-center justify-center m-5 ">
+        <Image data-testid="logo" src={logo} alt="logo" width={250} />
       </div>
       <div className="grid m-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
         {productCards}
