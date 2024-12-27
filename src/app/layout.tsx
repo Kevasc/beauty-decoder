@@ -3,10 +3,9 @@ import { Bebas_Neue } from "@next/font/google";
 import "./globals.css";
 import ClientLayout from "./client.layout";
 
-// Load the Google Font with specific configurations
 const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
-  weight: ["400"], // Only using the 400 weight
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -21,8 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={bebasNeue.className}>
-      <head />
-
+      <head>
+        <link rel="icon" href="app/favicon.ico" />
+      </head>
       <body>
         <ClientLayout>{children}</ClientLayout>
       </body>
