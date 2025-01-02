@@ -36,7 +36,9 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
 
   return (
     <div className=" text-gray-900 flex-col items-center bg-white rounded-lg max-h-[60vh] overflow-y-auto">
-      <h3 className="text-3xl font-semibold">{currentProduct.brand}</h3>
+      <h3 className="text-3xl flex justify-center font-semibold">
+        {currentProduct.brand}
+      </h3>
 
       {currentProduct.image_link && (
         <img
@@ -49,15 +51,18 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
       )}
       <div className="items-center gap-4 flex flex-col">
         <p className="font-semibold">{currentProduct.name}</p>
-        <p>{currentProduct?.description || "No description available."}</p>
+        <p className="p-5">
+          {currentProduct?.description || "No description available."}
+        </p>
         <div className="flex flex-wrap justify-center">{colorSwatch}</div>
 
         <div className="flex flex-col p-3 items-center gap-y-2">
+          <p>tags {currentProduct.product_tags}</p>
           <p>Last Updated: {updatedAt}</p>
           {creationDate && <p>Created On: {creationDate}</p>}
         </div>
       </div>
-      <div className="flex items-center justify-center bg-white p-6 sticky bottom-4">
+      <div className="flex items-center justify-center bg-white p-6 relative  bottom-4">
         <button
           className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded  hover:shadow-lg  mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
@@ -67,7 +72,7 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
           </a>
         </button>
         <button
-          className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded hover:shadow-lg   mr-1 mb-1 ease-linear transition-all duration-150"
+          className="bg-pink-500 text-white active:bg-emerald-600 font-bold  uppercase text-sm px-6 py-3 rounded hover:shadow-lg   mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
           // onClick={() => setIsOpen(false)}
         >
