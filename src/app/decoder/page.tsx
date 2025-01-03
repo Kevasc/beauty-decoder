@@ -20,6 +20,7 @@ import Modal from "@/components/Modal";
 import DetailsModalContent from "@/components/DetailsModalContent";
 import Image from "next/image";
 import logo from "../img/logo-cropped.png";
+import FilterGridMosaic from "@/components/FilterCards";
 
 export type Product = {
   name: string;
@@ -49,7 +50,8 @@ const Decoder: React.FC = () => {
     null
   );
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [filtersPicked, setFiltersPicked] = useState<boolean>(false);
   //The getProductsApi function is responsible for fetching product details from an API.
   const getProductsApi = async (productType: string) => {
     //This line cleans the product type string by converting it to lowercase and replacing spaces with underscores, to format it for API calls withought affecting how its displayed
@@ -102,27 +104,46 @@ const Decoder: React.FC = () => {
       );
     }
   );
-
+  console.log(filtersPicked);
   return (
     <div className="min-h-screen flex flex-col items-center justify-center ">
       <div className="container flex flex-col items-center justify-center m-5 ">
         <Image data-testid="logo" src={logo} alt="logo" width={250} />
       </div>
-      <div className="grid m-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
-        {productCards}
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
-        {specificProducts !== undefined && specificProducts.length > 0
-          ? specificProducts
-          : "Click a category to learn more"}
-      </div>
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-        {currentProduct ? (
-          <DetailsModalContent currentProduct={currentProduct} />
+      <div>
+        {filtersPicked === false ? (
+          <div>
+            <FilterGridMosaic
+              selectedFilters={selectedFilters}
+              setSelectedFilters={setSelectedFilters}
+            />
+            <button
+              className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded  hover:shadow-lg  mr-1 mb-1 ease-linear transition-all duration-150"
+              type="button"
+            >
+              <a onClick={() => setFiltersPicked(true)}>Go</a>
+            </button>
+          </div>
         ) : (
-          "no product selected"
+          <div className="flex items-center justify-center bg-white p-6 relative bottom-4">
+            <div className="grid m-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
+              {productCards}
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
+              {specificProducts !== undefined && specificProducts.length > 0
+                ? specificProducts
+                : null}
+            </div>
+            <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+              {currentProduct ? (
+                <DetailsModalContent currentProduct={currentProduct} />
+              ) : (
+                "no product selected"
+              )}
+            </Modal>
+          </div>
         )}
-      </Modal>
+      </div>
     </div>
   );
 };
