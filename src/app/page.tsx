@@ -25,7 +25,9 @@ const Homepage = () => {
           <Typewriter
             onInit={(typewriter) => {
               typewriter
-                .typeString("A Simple Cosmetics Comparison Website.")
+                .typeString(
+                  "A Simple Way to Filter the Beauty Products you LOVE."
+                )
                 .start();
             }}
             options={{
