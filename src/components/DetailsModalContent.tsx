@@ -57,14 +57,13 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
         <div className="flex flex-wrap justify-center">{colorSwatch}</div>
 
         <div className="flex flex-col p-3 items-center gap-y-2">
-          <p>tags {currentProduct.product_tags}</p>
           <p>Last Updated: {updatedAt}</p>
           {creationDate && <p>Created On: {creationDate}</p>}
         </div>
       </div>
-      <div className="flex items-center justify-center bg-white p-6 relative  bottom-4">
+      <div className="flex items-center justify-center bg-white p-6 relative bottom-4">
         <button
-          className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded  hover:shadow-lg  mr-1 mb-1 ease-linear transition-all duration-150"
+          className="bg-purple-600 text-white active:bg-purple-700 font-bold uppercase text-sm px-6 py-3 rounded  hover:shadow-lg  mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
         >
           <a href={currentProduct.website_link} target="_blank">
@@ -72,7 +71,7 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
           </a>
         </button>
         <button
-          className="bg-pink-500 text-white active:bg-emerald-600 font-bold  uppercase text-sm px-6 py-3 rounded hover:shadow-lg   mr-1 mb-1 ease-linear transition-all duration-150"
+          className="bg-purple-600 text-white active:bg-purple-700 font-bold  uppercase text-sm px-6 py-3 rounded hover:shadow-lg   mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
           // onClick={() => setIsOpen(false)}
         >
