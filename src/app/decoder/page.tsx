@@ -18,8 +18,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { DetailsCard } from "@/components/DetailsCard";
 import Modal from "@/components/Modal";
 import DetailsModalContent from "@/components/DetailsModalContent";
-import Image from "next/image";
-import logo from "../img/logo-cropped.png";
+
 import FilterGridMosaic from "@/components/FilterCards";
 
 export type Product = {
@@ -106,30 +105,40 @@ const Decoder: React.FC = () => {
   );
   console.log(filtersPicked);
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center ">
-      <div className="container flex flex-col items-center justify-center m-5 ">
-        <Image data-testid="logo" src={logo} alt="logo" width={250} />
-      </div>
+    <div className="min-h-screen flex flex-col items-center justify-center">
+      <h1 className="font-bebas m-5  text-6xl text-fuchsia-900 font-bold">
+        BEAUTY DECODER
+      </h1>
       <div>
         {filtersPicked === false ? (
-          <div>
+          <div className="flex flex-row items-center">
             <FilterGridMosaic
               selectedFilters={selectedFilters}
               setSelectedFilters={setSelectedFilters}
             />
             <button
-              className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded  hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
+              className="bg-purple-800 text-white hover:bg-purple-900 h-14 ml-6 w-14 p-10 font-mono flex justify-center items-center font-bold uppercase rounded-full cursor-pointer"
               type="button"
               onClick={() => setFiltersPicked(true)}
             >
-              Go
+              <span>Go</span>
             </button>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center bg-white p-6 relative bottom-4">
+          <div className="flex flex-col items-center justify-center ">
+            <div className="flex flex-row items-center">
+              <button
+                className="bg-purple-800 text-white hover:bg-purple-900 h-14 w-14 p-10 font-mono flex justify-center items-center font-bold uppercase rounded-full cursor-pointer"
+                type="button"
+                onClick={() => setFiltersPicked(false)}
+              >
+                <span>Back</span>
+              </button>
+            </div>
             <div className="grid m-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
               {productCards}
             </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
               {specificProducts !== undefined && specificProducts.length > 0
                 ? specificProducts
