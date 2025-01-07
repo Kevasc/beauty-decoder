@@ -118,14 +118,15 @@ const Decoder: React.FC = () => {
               setSelectedFilters={setSelectedFilters}
             />
             <button
-              className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded  hover:shadow-lg  mr-1 mb-1 ease-linear transition-all duration-150"
+              className="bg-pink-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded  hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
               type="button"
+              onClick={() => setFiltersPicked(true)}
             >
-              <a onClick={() => setFiltersPicked(true)}>Go</a>
+              Go
             </button>
           </div>
         ) : (
-          <div className="flex items-center justify-center bg-white p-6 relative bottom-4">
+          <div className="flex flex-col items-center justify-center bg-white p-6 relative bottom-4">
             <div className="grid m-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
               {productCards}
             </div>
