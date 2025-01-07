@@ -1,37 +1,34 @@
 "use client";
 
-// import { useState } from "react";
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
-const filterTags: Array<{
-  name: string;
-  id: string;
-  size: "small" | "medium" | "large";
-}> = [
-  { name: "Canadian", id: "Canadian", size: "small" },
-  { name: "Cerohol free", id: "Cerehol Free", size: "small" },
-  { name: "cruelty free", id: "Cruelty Free", size: "large" },
-  { name: "oil free", id: "Oil Free", size: "small" },
-  { name: "purpickstClean", id: "Purpicks (Clean Beauty)", size: "small" },
-  { name: "Chemical Free", id: "Chemical Free", size: "medium" },
-  { name: "Dairy Free", id: "Dairy Free", size: "medium" },
-  { name: "EWG Verified", id: " EWG Verfied", size: "small" },
-  { name: "EcoCert", id: "Eco Certified", size: "small" },
-  { name: "Fair Trade", id: "Fair Trade", size: "large" },
-  { name: "Gluten Free", id: "Gluten Free", size: "large" },
-  { name: "Hypoallergenic", id: "Hypoallergenic", size: "large" },
-  { name: "Natural", id: "Natural", size: "large" },
-  { name: "No Talc", id: "No Talc", size: "medium" },
-  { name: "Non-GMO", id: "Non GMO", size: "small" },
-  { name: "Organic", id: "Organic", size: "large" },
-  { name: "Peanut Free Product", id: "Peanut Free", size: "small" },
-  { name: "Sugar Free", id: "Sugar Free", size: "small" },
-  { name: "USDA Organic", id: "USDA Organic", size: "small" },
-  { name: "Vegan", id: "Vegan", size: "large" },
-  { name: "alc", id: "Alcohol Free", size: "small" },
-  { name: "silicone free", id: "Silicone Free", size: "large" },
-  { name: "water free", id: "Water Free", size: "medium" },
-];
+const filterTags: Array<{ name: string; size: "small" | "medium" | "large" }> =
+  [
+    { name: "Canadian", size: "small" },
+    { name: "Cerohol free", size: "small" },
+    { name: "cruelty free", size: "large" },
+    { name: "oil free", size: "small" },
+    { name: "purpickstClean", size: "small" },
+    { name: "Chemical Free", size: "medium" },
+    { name: "Dairy Free", size: "medium" },
+    { name: "EWG Verified", size: "small" },
+    { name: "EcoCert", size: "small" },
+    { name: "Fair Trade", size: "large" },
+    { name: "Gluten Free", size: "large" },
+    { name: "Hypoallergenic", size: "large" },
+    { name: "Natural", size: "large" },
+    { name: "No Talc", size: "medium" },
+    { name: "Non-GMO", size: "small" },
+    { name: "Organic", size: "large" },
+    { name: "Peanut Free Product", size: "small" },
+    { name: "Sugar Free", size: "small" },
+    { name: "USDA Organic", size: "small" },
+    { name: "Vegan", size: "large" },
+    { name: "alc", size: "small" },
+    { name: "silicone free", size: "large" },
+    { name: "water free", size: "medium" },
+  ];
 
 const FilterCard = ({
   filter,
@@ -59,15 +56,11 @@ const FilterCard = ({
       }`}
       onClick={onToggle}
     >
-      <CardContent
-        className={`p-4 flex items-center justify-center h-full ${
-          isSelected === true ? "text-gray-950 shadow-custom-glow-large" : null
-        }`}
-      >
+      <CardContent className="p-4 flex items-center justify-center h-full">
         <p
-          className={`font-medium text-center font-mono
-            ${size === "large" ? "text-xl" : "text-sm"}
-            `}
+          className={`font-medium text-center ${
+            size === "large" ? "text-xl" : "text-sm"
+          }`}
         >
           {filter}
         </p>
@@ -76,52 +69,45 @@ const FilterCard = ({
   );
 };
 
-const FilterGridMosaic = ({
-  selectedFilters,
-  setSelectedFilters,
-}: {
-  selectedFilters: string[]; // array of strings
-  setSelectedFilters: React.Dispatch<React.SetStateAction<string[]>>; // state setter function
-}) => {
+const FilterGridMosaic = ({ selectedFilters, setSelectedFilters }) => {
   const toggleFilter = (filter: string) => {
-    setSelectedFilters(
-      (prev) =>
-        prev.includes(filter)
-          ? prev.filter((f) => f !== filter) // Remove filter if already selected
-          : [...prev, filter] // Add filter if not selected
+    setSelectedFilters((prev) =>
+      prev.includes(filter)
+        ? prev.filter((f) => f !== filter)
+        : [...prev, filter]
     );
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-1 ml-10">
-      <div className="mt-6 p-4 bg-secondary bg-purple-50 mb-4 rounded-lg">
-        <h3 className="text-lg font-semibold font-mono mb-2 p-2">
-          Selected Filters:
-        </h3>
-        <div className="flex flex-wrap font-mono gap-2">
-          {selectedFilters.map((filter) => (
-            <span
-              key={filter}
-              className="px-3 py-1 bg-primary rounded-full text-sm cursor-pointer"
-              onClick={() => toggleFilter(filter)}
-            >
-              {filter} ✕
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div className="grid grid-cols-4 p-2 md:grid-cols-6 lg:grid-cols-8 gap-4 auto-rows-fr">
-        {filterTags.map(({ id, size }) => (
+    <div className="w-full max-w-6xl mx-auto p-4">
+      <h2 className="text-2xl font-bold mb-4">Filter Options</h2>
+      <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 auto-rows-fr">
+        {filterTags.map(({ name, size }) => (
           <FilterCard
-            key={id}
-            filter={id}
+            key={name}
+            filter={name}
             size={size}
-            isSelected={selectedFilters.includes(id)}
-            onToggle={() => toggleFilter(id)}
+            isSelected={selectedFilters.includes(name)}
+            onToggle={() => toggleFilter(name)}
           />
         ))}
       </div>
+      {selectedFilters.length > 0 && (
+        <div className="mt-6 p-4 bg-secondary rounded-lg">
+          <h3 className="text-lg font-semibold mb-2">Selected Filters:</h3>
+          <div className="flex flex-wrap gap-2">
+            {selectedFilters.map((filter) => (
+              <span
+                key={filter}
+                className="px-3 py-1 bg-primary text-primary-foreground rounded-full text-sm cursor-pointer"
+                onClick={() => toggleFilter(filter)}
+              >
+                {filter} ✕
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
