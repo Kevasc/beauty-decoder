@@ -1,9 +1,10 @@
 export const getProducts = async (
-  product: string
+  product: string,
+  filters: string[]
 ): Promise<ProductDetail[] | undefined> => {
   try {
     const response = await fetch(
-      `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${product}`,
+      `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${product}&product_tags=${filters}`,
       {
         method: "GET",
       }
