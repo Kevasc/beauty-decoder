@@ -51,7 +51,7 @@ const Decoder: React.FC = () => {
   const [filtersPicked, setFiltersPicked] = useState<boolean>(false);
   //The getProductsApi function is responsible for fetching product details from an API.
   const getProductsApi = async (productType: string) => {
-    //This line cleans the product type string by converting it to lowercase and replacing spaces with underscores, to format it for API calls withought affecting how its displayed
+    //This line cleans the product type string by converting it to lowercase and replacing spaces with underscores, to format it for API calls without affecting how its displayed
     const cleanedProductType = productType.toLowerCase().replace(" ", "_");
     //calls the getProducts function with the cleaned product type and waits for the result. This contains product details.
     const apiResult = await getProducts(
@@ -138,9 +138,16 @@ const Decoder: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
-              {specificProducts !== undefined && specificProducts.length > 0
-                ? specificProducts
-                : null}
+              {specificProducts !== undefined && specificProducts.length > 0 ? (
+                specificProducts
+              ) : (
+                <div className="col-span-full text-center text-gray-500">
+                  <p>
+                    No products match your selected filters. Please adjust your
+                    filters and try again.
+                  </p>
+                </div>
+              )}
             </div>
             <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
               {currentProduct ? (
