@@ -12,13 +12,11 @@ import LipLiner from "../img/LipLiner.png";
 import Lipstick from "../img/Lipstick.png";
 import Mascara from "../img/Mascara.png";
 import NailPolish from "../img/NailPolish.png";
-import { getProducts } from "@/api/api";
-import { ProductDetail } from "@/api/api";
+import { getProducts, ProductDetail } from "@/api/api";
 import { ProductCard } from "@/components/ProductCard";
 import { DetailsCard } from "@/components/DetailsCard";
 import Modal from "@/components/Modal";
 import DetailsModalContent from "@/components/DetailsModalContent";
-
 import FilterGridMosaic from "@/components/FilterCards";
 
 export type Product = {
@@ -106,7 +104,7 @@ const Decoder: React.FC = () => {
   console.log(filtersPicked);
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
-      <h1 className="font-bebas m-5  text-6xl text-fuchsia-900 font-bold">
+      <h1 className="font-bebas m-5 pt-5 text-6xl text-fuchsia-900 font-bold">
         BEAUTY DECODER
       </h1>
       <div>
@@ -126,17 +124,17 @@ const Decoder: React.FC = () => {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center ">
-            <div className="flex flex-row items-center">
+            <div className="flex flex-row items-center w-full px-10">
+              <div className="grid m-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-5 flex-grow">
+                {productCards}
+              </div>
               <button
-                className="bg-purple-800 text-white hover:bg-purple-900 h-14 w-14 p-10 font-mono flex justify-center items-center font-bold uppercase rounded-full cursor-pointer"
+                className="bg-purple-800 text-white hover:bg-purple-900 h-20 w-20 m-3 font-mono flex justify-center items-center font-bold uppercase rounded-full cursor-pointer"
                 type="button"
                 onClick={() => setFiltersPicked(false)}
               >
                 <span>Back</span>
               </button>
-            </div>
-            <div className="grid m-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
-              {productCards}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
