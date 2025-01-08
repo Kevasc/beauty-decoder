@@ -47,14 +47,17 @@ const Decoder: React.FC = () => {
     null
   );
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [selectedFiltersList, setSelectedFiltersList] = useState<string[]>([]);
   const [filtersPicked, setFiltersPicked] = useState<boolean>(false);
   //The getProductsApi function is responsible for fetching product details from an API.
   const getProductsApi = async (productType: string) => {
     //This line cleans the product type string by converting it to lowercase and replacing spaces with underscores, to format it for API calls withought affecting how its displayed
     const cleanedProductType = productType.toLowerCase().replace(" ", "_");
     //calls the getProducts function with the cleaned product type and waits for the result. This contains product details.
-    const apiResult = await getProducts(cleanedProductType);
+    const apiResult = await getProducts(
+      cleanedProductType,
+      selectedFiltersList
+    );
     apiResult?.sort((a, b) => {
       if (a.name > b.name) {
         return 1;
@@ -104,15 +107,12 @@ const Decoder: React.FC = () => {
   console.log(filtersPicked);
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
-      <h1 className="font-bebas m-5 pt-5 text-6xl text-fuchsia-900 font-bold">
-        BEAUTY DECODER
-      </h1>
       <div>
         {filtersPicked === false ? (
           <div className="flex flex-row items-center">
             <FilterGridMosaic
-              selectedFilters={selectedFilters}
-              setSelectedFilters={setSelectedFilters}
+              selectedFilters={selectedFiltersList}
+              setSelectedFilters={setSelectedFiltersList}
             />
             <button
               className="bg-purple-800 text-white hover:bg-purple-900 h-14 ml-6 w-14 p-10 font-mono flex justify-center items-center font-bold uppercase rounded-full cursor-pointer"
