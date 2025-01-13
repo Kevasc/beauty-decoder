@@ -1,4 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Beauty Decoder
+
+
+
+
+## Features
+
+- Filter through different allergens and preferences for individual beauty catorgories 
+- Using Luxon to display date of creation on products and when the data was last updated
+- Tested with Jest
+
+
+## Acknowledgements
+
+ - [Makeup API](http://makeup-api.herokuapp.com/api/v1/products.json)
+- [Luxon](https://moment.github.io/luxon/#/)
+- [CSS Glow Genarator](https://cssbud.com/css-generator/css-glow-generator/)
+- [Typewriter Effect](https://www.npmjs.com/package/typewriter-effect)
+- [React Burger Menu](https://www.npmjs.com/package/react-burger-menu)
+-
+-
+- This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
