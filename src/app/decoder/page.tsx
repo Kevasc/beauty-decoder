@@ -18,6 +18,7 @@ import { DetailsCard } from "@/components/DetailsCard";
 import Modal from "@/components/Modal";
 import DetailsModalContent from "@/components/DetailsModalContent";
 import FilterGridMosaic from "@/components/FilterCards";
+import { SelectedFilters } from "@/components/SelectedFilters";
 
 export type Product = {
   name: string;
@@ -104,15 +105,28 @@ const Decoder: React.FC = () => {
       );
     }
   );
+  const toggleFilter = (filter: string) => {
+    setSelectedFiltersList(
+      (prev) =>
+        prev.includes(filter)
+          ? prev.filter((f) => f !== filter) // Remove filter if already selected
+          : [...prev, filter] // Add filter if not selected
+    );
+  };
+
   console.log(filtersPicked);
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
       <div>
+        <SelectedFilters
+          selectedFilters={selectedFiltersList}
+          toggleFilter={toggleFilter}
+        />
         {filtersPicked === false ? (
           <div className="flex flex-row items-center">
             <FilterGridMosaic
               selectedFilters={selectedFiltersList}
-              setSelectedFilters={setSelectedFiltersList}
+              toggleFilter={toggleFilter}
             />
             <button
               className="bg-purple-800 text-white hover:bg-purple-900 h-14 ml-6 w-14 p-10 font-mono flex justify-center items-center font-bold uppercase rounded-full cursor-pointer"
