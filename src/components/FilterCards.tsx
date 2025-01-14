@@ -11,22 +11,22 @@ const filterTags: Array<{
   { name: "CertClean", id: "Certified Clean", size: "small" },
   { name: "cruelty free", id: "Cruelty Free", size: "medium" },
   { name: "oil free", id: "Oil Free", size: "small" },
-  { name: "purpickstClean", id: "Purpicks", size: "small" },
-  { name: "Chemical Free", id: "Chemical Free", size: "medium" },
-  { name: "Dairy Free", id: "Dairy Free", size: "medium" },
+  { name: "purpickstClean", id: "Purpicks", size: "medium" },
+  { name: "Chemical Free", id: "Chemical Free", size: "small" },
   { name: "EWG Verified", id: " EWG Verfied", size: "small" },
   { name: "EcoCert", id: "Eco Certified", size: "small" },
-  { name: "Fair Trade", id: "Fair Trade", size: "medium" },
+  { name: "Fair Trade", id: "Fair Trade", size: "small" },
   { name: "Gluten Free", id: "Gluten Free", size: "small" },
-  { name: "Hypoallergenic", id: "Hypoallergenic", size: "medium" },
+  { name: "Hypoallergenic", id: "Hypoallergenic", size: "small" },
+  { name: "Dairy Free", id: "Dairy Free", size: "medium" },
   { name: "Natural", id: "Natural", size: "small" },
-  { name: "No Talc", id: "No Talc", size: "medium" },
-  { name: "Non-GMO", id: "Non GMO", size: "small" },
+  { name: "No Talc", id: "No Talc", size: "small" },
+  { name: "Non-GMO", id: "Non GMO", size: "medium" },
   { name: "Organic", id: "Organic", size: "small" },
-  { name: "Vegan", id: "Vegan", size: "medium" },
-  { name: "alc", id: "Alcohol Free", size: "small" },
-  { name: "silicone free", id: "Silicone Free", size: "medium" },
-  { name: "water free", id: "Water Free", size: "medium" },
+  { name: "Vegan", id: "Vegan", size: "small" },
+  { name: "silicone free", id: "Silicone Free", size: "small" },
+  { name: "water free", id: "Water Free", size: "small" },
+  { name: "alc", id: "Alcohol Free", size: "medium" },
 ];
 
 const FilterCard = ({
@@ -41,9 +41,8 @@ const FilterCard = ({
   onToggle: () => void;
 }) => {
   const sizeClasses = {
-    small: "col-span-1 row-span-1",
+    small: "col-span-1 row-span-2",
     medium: "col-span-2 row-span-1",
-    large: "col-span-2 row-span-2",
   };
 
   return (
@@ -74,18 +73,16 @@ const FilterGridMosaic = ({
   toggleFilter: (filter: string) => void;
 }) => {
   return (
-    <div className="w-full max-w-6xl mx-auto p-1 ml-10">
-      <div className="grid grid-cols-4 p-2 md:grid-cols-6 lg:grid-cols-8 gap-4 auto-rows-fr">
-        {filterTags.map(({ id, size }) => (
-          <FilterCard
-            key={id}
-            filter={id}
-            size={size}
-            isSelected={selectedFilters.includes(id)}
-            onToggle={() => toggleFilter(id)}
-          />
-        ))}
-      </div>
+    <div className="grid grid-cols-6 gap-4 auto-rows-fr">
+      {filterTags.map(({ id, size }) => (
+        <FilterCard
+          key={id}
+          filter={id}
+          size={size}
+          isSelected={selectedFilters.includes(id)}
+          onToggle={() => toggleFilter(id)}
+        />
+      ))}
     </div>
   );
 };
