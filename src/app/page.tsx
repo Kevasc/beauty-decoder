@@ -21,7 +21,7 @@ const Homepage = () => {
           DECODER
         </p>
 
-        <div className="font-mono text-2xl font-normal text-neutral-900 flex items-center m-2 mt-4 justify-center">
+        <div className="font-mono text-2xl font-normal text-neutral-900 flex items-center h-16 p-4 m-2 justify-center">
           <Typewriter
             onInit={(typewriter) => {
               typewriter
