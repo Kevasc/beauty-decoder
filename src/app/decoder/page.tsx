@@ -18,6 +18,7 @@ import { DetailsCard } from "@/components/DetailsCard";
 import Modal from "@/components/Modal";
 import DetailsModalContent from "@/components/DetailsModalContent";
 import FilterGridMosaic from "@/components/FilterCards";
+import { SelectedFilters } from "@/components/SelectedFilters";
 
 export type Product = {
   name: string;
@@ -47,14 +48,17 @@ const Decoder: React.FC = () => {
     null
   );
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [selectedFiltersList, setSelectedFiltersList] = useState<string[]>([]);
   const [filtersPicked, setFiltersPicked] = useState<boolean>(false);
   //The getProductsApi function is responsible for fetching product details from an API.
   const getProductsApi = async (productType: string) => {
-    //This line cleans the product type string by converting it to lowercase and replacing spaces with underscores, to format it for API calls withought affecting how its displayed
+    //This line cleans the product type string by converting it to lowercase and replacing spaces with underscores, to format it for API calls without affecting how its displayed
     const cleanedProductType = productType.toLowerCase().replace(" ", "_");
     //calls the getProducts function with the cleaned product type and waits for the result. This contains product details.
-    const apiResult = await getProducts(cleanedProductType);
+    const apiResult = await getProducts(
+      cleanedProductType,
+      selectedFiltersList
+    );
     apiResult?.sort((a, b) => {
       if (a.name > b.name) {
         return 1;
@@ -101,18 +105,28 @@ const Decoder: React.FC = () => {
       );
     }
   );
+  const toggleFilter = (filter: string) => {
+    setSelectedFiltersList(
+      (prev) =>
+        prev.includes(filter)
+          ? prev.filter((f) => f !== filter) // Remove filter if already selected
+          : [...prev, filter] // Add filter if not selected
+    );
+  };
+
   console.log(filtersPicked);
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
-      <h1 className="font-bebas m-5 pt-5 text-6xl text-fuchsia-900 font-bold">
-        BEAUTY DECODER
-      </h1>
       <div>
+        <SelectedFilters
+          selectedFilters={selectedFiltersList}
+          toggleFilter={toggleFilter}
+        />
         {filtersPicked === false ? (
           <div className="flex flex-row items-center">
             <FilterGridMosaic
-              selectedFilters={selectedFilters}
-              setSelectedFilters={setSelectedFilters}
+              selectedFilters={selectedFiltersList}
+              toggleFilter={toggleFilter}
             />
             <button
               className="bg-purple-800 text-white hover:bg-purple-900 h-14 ml-6 w-14 p-10 font-mono flex justify-center items-center font-bold uppercase rounded-full cursor-pointer"
@@ -138,9 +152,16 @@ const Decoder: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
-              {specificProducts !== undefined && specificProducts.length > 0
-                ? specificProducts
-                : null}
+              {specificProducts !== undefined && specificProducts.length > 0 ? (
+                specificProducts
+              ) : (
+                <div className="col-span-full text-center text-gray-500">
+                  <p>
+                    No products match your selected filters. Please adjust your
+                    filters and try again.
+                  </p>
+                </div>
+              )}
             </div>
             <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
               {currentProduct ? (
