@@ -9,8 +9,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      boxShadow: {
-        "custom-glow-large": "0px 0px 30px 5px rgba(171,46,255,0.3)",
+      spacing: {
+        "58": "58px",
+      },
+      fontSize: {
+        "18": "18px",
+      },
+      borderRadius: {
+        "11": "11px",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       colors: {
         background: "#F3E8FF",
@@ -56,17 +65,26 @@ const config: Config = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        "button-primary": "#b970a5",
+        "button-primary-dark": "#e1bee7",
+        "button-primary-light": "#ffffff",
+        "button-primary-hover": "#701a75",
+        "button-primary-active": "#B069DB",
+      },
+      boxShadow: {
+        raise: "0px 6px 6px rgba(0, 0, 0, 0.2)",
+        "hover-pressure": "0px 4px 4px rgba(0, 0, 0, 0.2)",
+        "custom-glow-large": "0px 0px 30px 5px rgba(171,46,255,0.3)",
+      },
+      transitionDuration: {
+        "transform-speed": "250ms",
       },
       fontFamily: {
         bebas: ["Bebas Neue", "sans-serif", "mono"],
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
 };
+
 export default config;

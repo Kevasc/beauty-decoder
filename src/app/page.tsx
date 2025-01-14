@@ -1,5 +1,31 @@
 "use client";
 import Typewriter from "typewriter-effect";
+import { AwesomeButton } from "react-awesome-button";
+
+const Buttons = () => {
+  return (
+    <div className="flex gap-4 mt-6">
+      <AwesomeButton
+        type="primary"
+        className="!bg-button-primary !text-button-primary-light !shadow-hover-pressure !text-lg !rounded-11 !transition-transform !duration-transform-speed hover:!bg-button-primary-hover active:!bg-button-primary-active"
+      >
+        Decode
+      </AwesomeButton>
+      <AwesomeButton
+        type="primary"
+        className="!bg-button-primary !text-button-primary-light !text-lg !rounded-11 !shadow-raise !transition-transform !duration-transform-speed hover:!bg-button-primary-hover active:!bg-button-primary-active"
+      >
+        About
+      </AwesomeButton>
+      <AwesomeButton
+        type="primary"
+        className="!bg-button-primary !text-button-primary-light !text-lg !rounded-11 !shadow-raise !transition-transform !duration-transform-speed hover:!bg-button-primary-hover active:!bg-button-primary-active"
+      >
+        Contact
+      </AwesomeButton>
+    </div>
+  );
+};
 
 const Homepage = () => {
   return (
@@ -35,6 +61,7 @@ const Homepage = () => {
             }}
           />
         </div>
+        <Buttons />
       </div>
     </div>
   );
