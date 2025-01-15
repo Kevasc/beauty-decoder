@@ -11,6 +11,8 @@ const config: Config = {
     extend: {
       spacing: {
         "58": "58px",
+        "button-height": "var(--button-default-height)",
+        "button-padding": "var(--button-horizontal-padding)",
       },
       fontSize: {
         "18": "18px",
@@ -20,6 +22,7 @@ const config: Config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        button: "var(--button-default-border-radius)",
       },
       colors: {
         background: "#F3E8FF",
@@ -38,6 +41,10 @@ const config: Config = {
         primary: {
           DEFAULT: "#E1BEE7",
           foreground: "hsl(var(--primary-foreground))",
+          dark: "var(--button-primary-color-dark)",
+          light: "var(--button-primary-color-light)",
+          hover: "var(--button-primary-color-hover)",
+          active: "var(--button-primary-color-active)",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -66,8 +73,8 @@ const config: Config = {
           "5": "hsl(var(--chart-5))",
         },
         "button-primary": "#b970a5",
-        "button-primary-dark": "#e1bee7",
-        "button-primary-light": "#ffffff",
+        "button-primary-light": "#F3E8FF",
+        "button-primary-text": "#ffffff",
         "button-primary-hover": "#701a75",
         "button-primary-active": "#B069DB",
       },
@@ -75,9 +82,14 @@ const config: Config = {
         raise: "0px 6px 6px rgba(0, 0, 0, 0.2)",
         "hover-pressure": "0px 4px 4px rgba(0, 0, 0, 0.2)",
         "custom-glow-large": "0px 0px 30px 5px rgba(171,46,255,0.3)",
+        "button-raise":
+          "0px var(--button-raise-level) var(--button-raise-level) rgba(0, 0, 0, 0.2)",
+        "button-hover-pressure":
+          "0px var(--button-hover-pressure) var(--button-hover-pressure) rgba(0, 0, 0, 0.2)",
       },
       transitionDuration: {
         "transform-speed": "250ms",
+        transform: "var(--transform-speed)",
       },
       fontFamily: {
         bebas: ["Bebas Neue", "sans-serif", "mono"],
