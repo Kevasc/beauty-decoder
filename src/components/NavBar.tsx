@@ -13,10 +13,10 @@ const styles = {
     top: "36px",
   },
   bmBurgerBars: {
-    background: "#000000",
+    background: "#701a75",
   },
   bmBurgerBarsHover: {
-    background: "#a90000",
+    background: "#F3E8FF",
   },
   bmCross: {
     background: "#bdc3c7",
@@ -26,7 +26,7 @@ const styles = {
     height: "100%",
   },
   bmMenu: {
-    background: "#ffffff",
+    background: "#F3E8FF",
     padding: "2.5em 2.5em 0",
     fontSize: "1.15em",
   },
@@ -36,11 +36,10 @@ const styles = {
   bmItemList: {
     color: "#000000",
     padding: "1em",
-    fontSize: "1.5em",
+    fontSize: "2rem",
+    gap: "1em",
   },
-  bmItem: {
-    display: "block",
-  },
+
   bmOverlay: {
     background: "rgba(0, 0, 0, 0.3)",
   },

@@ -6,7 +6,7 @@ export const SelectedFilters = ({
   toggleFilter: (filter: string) => void;
 }) => {
   return (
-    <div className="mt-6 p-4 bg-secondary flex bg-purple-50 rounded-lg">
+    <div className="mt-6 bg-secondary flex max-w-7xl bg-purple-50 rounded-lg">
       <h3 className="text-lg font-semibold font-mono p-2">Selected Filters:</h3>
       <div className="flex flex-wrap items-center font-mono gap-2">
         {selectedFilters.map((filter) => (
