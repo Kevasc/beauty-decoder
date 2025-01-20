@@ -1,6 +1,8 @@
 "use client";
 import Typewriter from "typewriter-effect";
 import { AwesomeButton } from "react-awesome-button";
+import Image from "next/image";
+import purpleLogo from "../app/img/purple-logo.png";
 
 const Buttons = () => {
   return (
@@ -34,19 +36,12 @@ const Homepage = () => {
       className="min-h-screen flex flex-col items-center justify-center"
     >
       <div className="container flex flex-col items-center justify-center mx-auto">
-        <h1
-          data-testid="heading_top_line"
-          className="font-bebas text-9xl text-fuchsia-900 font-bold"
-        >
-          BEAUTY
-        </h1>
-        <p
-          data-testid="heading_bottom_line"
-          className="font-bebas text-9xl text-fuchsia-900 font-bold"
-        >
-          DECODER
-        </p>
-
+        <Image
+          src={purpleLogo}
+          width={700}
+          height={700}
+          alt="purple logo"
+        ></Image>
         <div className="font-mono text-2xl font-normal text-neutral-900 flex items-center h-16 p-4 m-2 justify-center">
           <Typewriter
             onInit={(typewriter) => {
