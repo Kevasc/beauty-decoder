@@ -79,13 +79,7 @@ const config: Config = {
         "button-primary-active": "#B069DB",
       },
       boxShadow: {
-        raise: "0px 6px 6px rgba(0, 0, 0, 0.2)",
-        "hover-pressure": "0px 4px 4px rgba(0, 0, 0, 0.2)",
         "custom-glow-large": "0px 0px 30px 5px rgba(171,46,255,0.3)",
-        "button-raise":
-          "0px var(--button-raise-level) var(--button-raise-level) rgba(0, 0, 0, 0.2)",
-        "button-hover-pressure":
-          "0px var(--button-hover-pressure) var(--button-hover-pressure) rgba(0, 0, 0, 0.2)",
       },
       transitionDuration: {
         "transform-speed": "250ms",

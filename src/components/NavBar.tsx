@@ -19,11 +19,11 @@ const styles = {
     background: "#F3E8FF",
   },
   bmCross: {
-    background: "#bdc3c7",
+    background: "#701a75",
   },
   bmMenuWrap: {
     position: "fixed",
-    height: "100%",
+    height: "100vh",
   },
   bmMenu: {
     background: "#F3E8FF",

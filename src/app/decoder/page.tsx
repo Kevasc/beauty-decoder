@@ -117,13 +117,13 @@ const Decoder: React.FC = () => {
   console.log(filtersPicked);
   return (
     <div>
-      <div className="flex flex-col pt-32 min-h-28 rounded-sm mx-8">
+      <div className="flex justify-center rounded-sm ">
         <SelectedFilters
           selectedFilters={selectedFiltersList}
           toggleFilter={toggleFilter}
         />
       </div>
-      <div className="flex flex-col  items-center justify-center">
+      <div className="flex flex-col items-center justify-center">
         {filtersPicked === false ? (
           <div className="flex flex-row items-center p-10">
             <FilterGridMosaic
@@ -131,7 +131,7 @@ const Decoder: React.FC = () => {
               toggleFilter={toggleFilter}
             />
             <button
-              className="bg-purple-800 text-white hover:bg-purple-900 h-40 w-40 m-3 font-mono flex justify-center items-center font-bold rounded-full cursor-pointer"
+              className="bg-purple-800 text-white hover:bg-purple-900 h-40 w-40 m-3 ml-14 font-mono flex justify-center items-center font-bold rounded-full cursor-pointer"
               type="button"
               onClick={() => setFiltersPicked(true)}
             >
@@ -145,7 +145,7 @@ const Decoder: React.FC = () => {
                 {productCards}
               </div>
               <button
-                className="bg-purple-800 text-white hover:bg-purple-900 h-40 w-40 m-3 font-mono flex justify-center items-center font-bold rounded-full cursor-pointer"
+                className="bg-purple-800 text-white hover:bg-purple-900 h-40 w-40 m-1 font-mono flex justify-center items-center font-bold rounded-full cursor-pointer"
                 type="button"
                 onClick={() => setFiltersPicked(false)}
               >
