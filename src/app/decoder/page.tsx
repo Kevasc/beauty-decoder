@@ -19,6 +19,7 @@ import Modal from "@/components/Modal";
 import DetailsModalContent from "@/components/DetailsModalContent";
 import FilterGridMosaic from "@/components/FilterCards";
 import { SelectedFilters } from "@/components/SelectedFilters";
+import SpinnerLoading from "@/components/SpinnerLoader";
 
 export type Product = {
   name: string;
@@ -43,15 +44,18 @@ const Decoder: React.FC = () => {
   // this initializes as an empty array. The state can hold either an array of ProductDetail, an empty array, or undefined
   const [productDetailsList, setProductDetailsList] = useState<
     ProductDetail[] | [] | undefined
-  >([]);
+  >(undefined);
   const [currentProduct, setCurrentProduct] = useState<ProductDetail | null>(
     null
   );
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedFiltersList, setSelectedFiltersList] = useState<string[]>([]);
   const [filtersPicked, setFiltersPicked] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   //The getProductsApi function is responsible for fetching product details from an API.
   const getProductsApi = async (productType: string) => {
+    setIsLoading(true);
     //This line cleans the product type string by converting it to lowercase and replacing spaces with underscores, to format it for API calls without affecting how its displayed
     const cleanedProductType = productType.toLowerCase().replace(" ", "_");
     //calls the getProducts function with the cleaned product type and waits for the result. This contains product details.
@@ -69,6 +73,7 @@ const Decoder: React.FC = () => {
 
     //This updates the productDetailsList state with the fetched product details from the API
     setProductDetailsList(apiResult);
+    setIsLoading(false);
   };
 
   //the productCards variable is an array of productCards created by mapping over staticCatergoryArray and returns a product card for each item
@@ -152,19 +157,22 @@ const Decoder: React.FC = () => {
                 <span>BACK</span>
               </button>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
-              {specificProducts !== undefined && specificProducts.length > 0 ? (
-                specificProducts
-              ) : (
-                <div className="col-span-full text-center text-gray-500">
-                  <p>
-                    No products match your selected filters. Please adjust your
-                    filters and try again.
-                  </p>
-                </div>
-              )}
-            </div>
+            {isLoading ? <SpinnerLoading /> : null}
+            {productDetailsList !== undefined && !isLoading ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
+                {specificProducts !== undefined &&
+                specificProducts.length > 0 ? (
+                  specificProducts
+                ) : (
+                  <div className="col-span-full text-center text-gray-500">
+                    <p>
+                      No products match your selected filters. Please adjust
+                      your filters and try again.
+                    </p>
+                  </div>
+                )}
+              </div>
+            ) : null}
             <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
               {currentProduct ? (
                 <DetailsModalContent currentProduct={currentProduct} />
