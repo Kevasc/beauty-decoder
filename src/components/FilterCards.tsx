@@ -8,20 +8,16 @@ const filterTags: Array<{
   id: string;
   size: "small" | "medium";
 }> = [
-  // { name: "CertClean", id: "Certified Clean", size: "small" },
   { name: "cruelty free", id: "Cruelty Free", size: "medium" },
   { name: "oil free", id: "Oil Free", size: "small" },
   { name: "purpickstClean", id: "Purpicks", size: "medium" },
   { name: "Chemical Free", id: "Chemical Free", size: "small" },
-  // { name: "EWG Verified", id: " EWG Verfied", size: "small" },
-  // { name: "EcoCert", id: "Eco Certified", size: "small" },
   { name: "Fair Trade", id: "Fair Trade", size: "small" },
   { name: "Gluten Free", id: "Gluten Free", size: "small" },
   { name: "Hypoallergenic", id: "Hypoallergenic", size: "medium" },
   { name: "Dairy Free", id: "Dairy Free", size: "medium" },
   { name: "Natural", id: "Natural", size: "medium" },
   { name: "No Talc", id: "No Talc", size: "medium" },
-  // { name: "Non-GMO", id: "Non GMO", size: "medium" },
   { name: "Organic", id: "Organic", size: "small" },
   { name: "Vegan", id: "Vegan", size: "small" },
   { name: "silicone free", id: "Silicone Free", size: "medium" },

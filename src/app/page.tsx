@@ -1,30 +1,25 @@
 "use client";
 import Typewriter from "typewriter-effect";
-import { AwesomeButton } from "react-awesome-button";
+
 import Image from "next/image";
 import purpleLogo from "../app/img/purple-logo.png";
+import Link from "next/link";
 
 const Buttons = () => {
   return (
     <div className="flex gap-4 font-mono mt-6">
-      <AwesomeButton
-        type="primary"
-        className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:bg-button-primary-dark hover:border-2 hover:border-fuchsia-900 active:bg-button-primary "
+      <Link
+        className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:bg-button-primary-dark hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
+        href="/decoder"
       >
         Decode
-      </AwesomeButton>
-      <AwesomeButton
-        type="primary"
+      </Link>
+      <Link
         className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:bg-button-primary-dark hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
-      >
-        About
-      </AwesomeButton>
-      <AwesomeButton
-        type="primary"
-        className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:bg-button-primary-dark hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
+        href="/about"
       >
         Contact
-      </AwesomeButton>
+      </Link>
     </div>
   );
 };
@@ -56,6 +51,7 @@ const Homepage = () => {
             }}
           />
         </div>
+
         <Buttons />
       </div>
     </div>

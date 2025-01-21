@@ -20,6 +20,7 @@ import DetailsModalContent from "@/components/DetailsModalContent";
 import FilterGridMosaic from "@/components/FilterCards";
 import { SelectedFilters } from "@/components/SelectedFilters";
 import SpinnerLoading from "@/components/SpinnerLoader";
+import { useRef } from "react";
 
 export type Product = {
   name: string;
@@ -52,6 +53,7 @@ const Decoder: React.FC = () => {
   const [selectedFiltersList, setSelectedFiltersList] = useState<string[]>([]);
   const [filtersPicked, setFiltersPicked] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   //The getProductsApi function is responsible for fetching product details from an API.
   const getProductsApi = async (productType: string) => {
@@ -73,6 +75,7 @@ const Decoder: React.FC = () => {
 
     //This updates the productDetailsList state with the fetched product details from the API
     setProductDetailsList(apiResult);
+
     setIsLoading(false);
   };
 
@@ -88,10 +91,12 @@ const Decoder: React.FC = () => {
         //An inline function that calls getProductsApi with the product's name when the card is clicked
         onClick={() => {
           getProductsApi(product.name);
+          ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
         }}
       />
     );
   });
+
   //the question mark checks if productDetailsList (an array of product data) exists. If it does, it maps over each product in the list
   const specificProducts: JSX.Element[] | undefined = productDetailsList?.map(
     //For each product, it returns a DetailsCard component, passing in makeupDetailData (containing details about that specific product).
@@ -119,7 +124,6 @@ const Decoder: React.FC = () => {
     );
   };
 
-  console.log(filtersPicked);
   return (
     <div>
       <div className="flex justify-center rounded-sm ">
@@ -157,9 +161,13 @@ const Decoder: React.FC = () => {
                 <span>BACK</span>
               </button>
             </div>
-            {isLoading === true ? <SpinnerLoading /> : null}
-            {productDetailsList !== undefined && isLoading === true ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10">
+            {isLoading === true ? (
+              <div className="h-[100rem]" ref={ref} id="spinnerLoading">
+                <SpinnerLoading />
+              </div>
+            ) : null}
+            {productDetailsList !== undefined ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10 min-h-[100rem]">
                 {specificProducts !== undefined &&
                 specificProducts.length > 0 ? (
                   specificProducts
@@ -173,6 +181,7 @@ const Decoder: React.FC = () => {
                 )}
               </div>
             ) : null}
+
             <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
               {currentProduct ? (
                 <DetailsModalContent currentProduct={currentProduct} />
