@@ -15,9 +15,6 @@ const styles = {
   bmBurgerBars: {
     background: "#701a75",
   },
-  bmBurgerBarsHover: {
-    background: "#F3E8FF",
-  },
   bmCross: {
     background: "#701a75",
   },
@@ -27,7 +24,7 @@ const styles = {
   },
   bmMenu: {
     background: "#F3E8FF",
-    padding: "2.5em 2.5em 0",
+    padding: "2.5em",
     fontSize: "1.15em",
   },
   bmMorphShape: {
@@ -36,10 +33,8 @@ const styles = {
   bmItemList: {
     color: "#000000",
     padding: "1em",
-    fontSize: "2rem",
-    gap: "1em",
+    fontSize: "1.5rem",
   },
-
   bmOverlay: {
     background: "rgba(0, 0, 0, 0.3)",
   },
@@ -60,7 +55,7 @@ const NavBar = () => {
           onClick={() => {
             setIsOpen(false);
           }}
-          className="menu-item font-mono  text-neutral-900"
+          className="py-4 menu-item font-mono text-neutral-900"
           id="home"
         >
           Home
@@ -70,20 +65,30 @@ const NavBar = () => {
           onClick={() => {
             setIsOpen(false);
           }}
-          className="menu-item font-mono text-neutral-900"
+          className="py-4 menu-item font-mono text-neutral-900"
           id="decoder"
         >
           Decoder
+        </Link>
+        <Link
+          href="/likedProducts"
+          onClick={() => {
+            setIsOpen(false);
+          }}
+          className="py-4 menu-item font-mono text-neutral-900"
+          id="likedProducts"
+        >
+          My Products
         </Link>
         <Link
           href="/about"
           onClick={() => {
             setIsOpen(false);
           }}
-          className="menu-item font-mono  text-neutral-900"
+          className="py-4 menu-item font-mono text-neutral-900"
           id="about"
         >
-          About
+          Contact
         </Link>
       </Menu>
     </span>

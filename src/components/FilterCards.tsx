@@ -43,10 +43,12 @@ const FilterCard = ({
 
   return (
     <Card
-      className={`${sizeClasses[size]} cursor-pointer transition-colors ${
+      className={`${
+        sizeClasses[size]
+      } cursor-pointer hover:border-purple-950 transition-colors ${
         isSelected
-          ? "bg-primary text-primary-foreground"
-          : "bg-background hover:bg-secondary"
+          ? "bg-primary text-primary-foreground border-purple-950"
+          : "bg-background hover:bg-purple-200 "
       }`}
       onClick={onToggle}
     >
