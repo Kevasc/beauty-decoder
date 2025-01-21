@@ -1,6 +1,5 @@
 "use client";
 import Typewriter from "typewriter-effect";
-
 import Image from "next/image";
 import purpleLogo from "../app/img/purple-logo.png";
 import Link from "next/link";
@@ -19,6 +18,12 @@ const Buttons = () => {
         href="/about"
       >
         Contact
+      </Link>
+      <Link
+        className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:bg-button-primary-dark hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
+        href="/likedProducts"
+      >
+        My Products
       </Link>
     </div>
   );
