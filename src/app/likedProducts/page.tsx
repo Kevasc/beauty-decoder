@@ -1,10 +1,20 @@
-const likedProducts: React.FC = () => {
+import React from "react";
+interface LikeItem {
+  id: number;
+  name: string;
+}
+const likeList: LikeItem[] = [];
+const LikedProducts: React.FC = () => {
   return (
-    <div className="container flex flex-col items-center justify-center mx-auto ">
-      <p className="font-bebas text-2xl font-normal flex items-center m-2 mt-4  justify-center ">
-        list of liked products will appear here using redux
-      </p>
+    <div className="container flex flex-col items-center justify-center mx-auto">
+      <ul>
+        {likeList.length > 0 ? (
+          likeList.map((item) => <li key={item.id}>{item.name}</li>)
+        ) : (
+          <li>No liked products yet.</li>
+        )}
+      </ul>
     </div>
   );
 };
-export default likedProducts;
+export default LikedProducts;
