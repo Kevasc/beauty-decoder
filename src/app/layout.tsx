@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bebas_Neue } from "@next/font/google";
 import "./globals.css";
 import ClientLayout from "./client.layout";
+import ReduxProvider from "@/components/ReduxProvider";
 
 const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
@@ -24,7 +25,9 @@ export default function RootLayout({
         <link rel="icon" href="app/favicon.ico" />
       </head>
       <body>
-        <ClientLayout>{children}</ClientLayout>
+        <ReduxProvider>
+          <ClientLayout>{children}</ClientLayout>
+        </ReduxProvider>
       </body>
     </html>
   );
