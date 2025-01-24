@@ -1,19 +1,18 @@
+"use client";
+import { ProductDetail } from "@/api/api";
+import { DetailsCard } from "@/components/DetailsCard";
 import React from "react";
-interface LikeItem {
-  id: number;
-  name: string;
-}
-const likeList: LikeItem[] = [];
+import { useSelector } from "react-redux";
+
 const LikedProducts: React.FC = () => {
+  const likedList: ProductDetail[] = useSelector((state: any) => {
+    return state.likedProducts.list;
+  });
   return (
     <div className="container flex flex-col items-center justify-center mx-auto">
-      <ul>
-        {likeList.length > 0 ? (
-          likeList.map((item) => <li key={item.id}>{item.name}</li>)
-        ) : (
-          <li>No liked products yet.</li>
-        )}
-      </ul>
+      {likedList.map((product: ProductDetail, i: number): JSX.Element => {
+        return <DetailsCard key={i} makeupDetailData={product} />;
+      })}
     </div>
   );
 };
