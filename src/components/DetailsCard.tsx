@@ -2,7 +2,7 @@ import { ProductDetail } from "@/api/api";
 
 interface DetailsCardProps {
   makeupDetailData: ProductDetail;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const DetailsCard = ({

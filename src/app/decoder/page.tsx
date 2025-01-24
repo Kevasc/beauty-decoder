@@ -75,7 +75,6 @@ const Decoder: React.FC = () => {
 
     //This updates the productDetailsList state with the fetched product details from the API
     setProductDetailsList(apiResult);
-
     setIsLoading(false);
   };
 

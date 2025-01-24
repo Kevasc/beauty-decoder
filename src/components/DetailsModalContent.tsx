@@ -1,6 +1,8 @@
 import { ProductDetail } from "@/api/api";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { DateTime } from "luxon";
+import { useDispatch } from "react-redux";
+import { addToLikedList } from "@/redux/likedProductsSlice";
 
 interface DetailsModalContentProps {
   currentProduct: ProductDetail;
@@ -32,7 +34,7 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
       )
     : null;
 
-  //make a like list
+  const dispatch = useDispatch();
 
   return (
     <div className=" text-gray-900 flex-col items-center bg-white rounded-lg max-h-[60vh] overflow-y-auto">
@@ -63,7 +65,7 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
       </div>
       <div className="flex items-center justify-center bg-white p-6 relative bottom-4">
         <button
-          className="bg-button-primary-hover text-white active:bg-purple-900 font-bold uppercase text-sm px-6 py-3 rounded  hover:shadow-lg  mr-1 mb-1 ease-linear transition-all duration-150"
+          className="bg-button-primary-hover text-white active:bg-purple-900 font-bold uppercase text-sm px-6 py-3 rounded hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
         >
           <a href={currentProduct.website_link} target="_blank">
@@ -71,9 +73,9 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
           </a>
         </button>
         <button
-          className="bg-button-primary-hover text-white active:bg-purple-900 font-bold  uppercase text-sm px-6 py-3 rounded hover:shadow-lg   mr-1 mb-1 ease-linear transition-all duration-150"
+          className="bg-button-primary-hover text-white active:bg-purple-900 font-bold uppercase text-sm px-6 py-3 rounded hover:shadow-lg mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
-          // onClick={() => setIsOpen(false)}
+          onClick={() => dispatch(addToLikedList(currentProduct))}
         >
           like
         </button>
