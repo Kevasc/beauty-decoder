@@ -66,7 +66,7 @@ const Decoder: React.FC = () => {
       selectedFiltersList
     );
     apiResult?.sort((a, b) => {
-      if (a.name > b.name) {
+      if (a.brand > b.brand) {
         return 1;
       } else {
         return -1;

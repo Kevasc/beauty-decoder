@@ -23,7 +23,7 @@ export const getProducts = async (
 
 export type ProductDetail = {
   api_featured_image: string;
-  brand: string | null;
+  brand: string;
   category: null | string;
   created_at: string;
   currency: null | string;
