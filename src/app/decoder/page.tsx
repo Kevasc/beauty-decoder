@@ -125,12 +125,20 @@ const Decoder: React.FC = () => {
 
   return (
     <div>
-      <div className="flex justify-center rounded-sm ">
+      <span className="font-mono text-center text-slate-900 p-4 m-4 text-1xl flex justify-center">
+        Filter products by selecting one or more options.
+        <br />
+        Want to see everything? Just click 'Go.'
+        <br />
+        Explore categories to find even more products!
+      </span>
+      <div className="flex justify-center p-4 rounded-sm ">
         <SelectedFilters
           selectedFilters={selectedFiltersList}
           toggleFilter={toggleFilter}
         />
       </div>
+
       <div className="flex flex-col items-center justify-center">
         {filtersPicked === false ? (
           <div className="flex flex-row items-center p-10">

@@ -67,7 +67,7 @@ const FilterGridMosaic = ({
   selectedFilters,
   toggleFilter,
 }: {
-  selectedFilters: string[]; // array of strings
+  selectedFilters: string[];
   toggleFilter: (filter: string) => void;
 }) => {
   return (
