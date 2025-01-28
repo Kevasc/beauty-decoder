@@ -8,21 +8,24 @@ const filterTags: Array<{
   id: string;
   size: "small" | "medium";
 }> = [
+  { name: "Canadian", id: "Canadian", size: "small" },
   { name: "cruelty free", id: "Cruelty Free", size: "medium" },
-  { name: "oil free", id: "Oil Free", size: "small" },
-  { name: "purpickstClean", id: "Purpicks", size: "medium" },
-  { name: "Chemical Free", id: "Chemical Free", size: "small" },
-  { name: "Fair Trade", id: "Fair Trade", size: "small" },
+  { name: "oil free", id: "Oil Free", size: "medium" },
+  { name: "purpickstClean", id: "Purpicks", size: "small" },
+  { name: "Chemical Free", id: "Chemical Free", size: "medium" },
+  { name: "Fair Trade", id: "Fair Trade", size: "medium" },
   { name: "Gluten Free", id: "Gluten Free", size: "small" },
   { name: "Hypoallergenic", id: "Hypoallergenic", size: "medium" },
   { name: "Dairy Free", id: "Dairy Free", size: "medium" },
-  { name: "Natural", id: "Natural", size: "medium" },
+  { name: "Natural", id: "Natural", size: "small" },
   { name: "No Talc", id: "No Talc", size: "medium" },
-  { name: "Organic", id: "Organic", size: "small" },
-  { name: "Vegan", id: "Vegan", size: "small" },
-  { name: "silicone free", id: "Silicone Free", size: "medium" },
-  { name: "water free", id: "Water Free", size: "small" },
-  { name: "alc", id: "Alcohol Free", size: "small" },
+  { name: "Organic", id: "Organic", size: "medium" },
+  { name: "Sugar Free", id: "Sugar Free", size: "small" },
+  { name: "USDA Organic", id: "USDA Organic", size: "medium" },
+  { name: "Vegan", id: "Vegan", size: "medium" },
+  { name: "silicone free", id: "Silicone Free", size: "small" },
+  { name: "water free", id: "Water Free", size: "medium" },
+  { name: "alc", id: "Alcohol Free", size: "medium" },
 ];
 
 const FilterCard = ({
@@ -37,8 +40,8 @@ const FilterCard = ({
   onToggle: () => void;
 }) => {
   const sizeClasses = {
-    small: "col-span-1 row-span-2",
-    medium: "col-span-2 row-span-1",
+    small: "col-span-2 row-span-1",
+    medium: "col-span-1 row-span-2",
   };
 
   return (
