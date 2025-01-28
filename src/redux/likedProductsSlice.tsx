@@ -1,5 +1,6 @@
+import { ProductDetail } from "@/api/api";
 import { createSlice } from "@reduxjs/toolkit";
-
+//this is what the redux store looks like
 const initialState = {
   list: [],
 };
@@ -7,13 +8,14 @@ const initialState = {
 const likedProductsSlice = createSlice({
   name: "likedProducts",
   initialState,
+  // reducers are how we manipulate the data by adding or removing it
   reducers: {
     addToLikedList: (state, action) => {
       state.list.push(action.payload);
     },
     removeFromLikedList: (state, action) => {
       state.list = state.list.filter(
-        (product) => product.id !== action.payload
+        (product: ProductDetail) => product.id !== action.payload
       );
     },
   },
