@@ -5,7 +5,7 @@ import purpleLogo from "../app/img/purple-logo.png";
 
 const Header = () => {
   return (
-    <header className="flex justify-center">
+    <header className="flex justify-center bg-white">
       <Link href={"/"}>
         <Image
           src={purpleLogo}

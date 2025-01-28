@@ -98,7 +98,7 @@ const Decoder: React.FC = () => {
 
   //the question mark checks if productDetailsList (an array of product data) exists. If it does, it maps over each product in the list
   const specificProducts: JSX.Element[] | undefined = productDetailsList?.map(
-    //For each product, it returns a DetailsCard component, passing in makeupDetailData (containing details about that specific product).
+    //For each product, it returns a DetailsCard component, passing in makeupDetailData (containing details contact that specific product).
     (product: ProductDetail, i: number): JSX.Element => {
       //Returns a JSX element for each product
       //The key attribute is set to i, the index of the product, ensuring each element is uniquely identifiable.
@@ -174,7 +174,7 @@ const Decoder: React.FC = () => {
               </div>
             ) : null}
             {productDetailsList !== undefined ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10 min-h-[100rem]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-10 ">
                 {specificProducts !== undefined &&
                 specificProducts.length > 0 ? (
                   specificProducts
