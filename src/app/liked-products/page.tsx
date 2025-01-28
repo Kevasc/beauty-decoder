@@ -32,15 +32,19 @@ const LikedProducts: React.FC = () => {
       </span>
 
       <div className="grid grid-cols-3 gap-6 p-4 m-4">
-        {likedList.map((product: ProductDetail, i: number): JSX.Element => {
-          return (
+        {likedList && likedList.length > 0 ? (
+          likedList.map((product: ProductDetail, i: number) => (
             <DetailsCard
               key={i}
               makeupDetailData={product}
               onClick={() => handleCardClick(product)}
             />
-          );
-        })}
+          ))
+        ) : (
+          <div className="col-span-full text-center text-gray-500">
+            <p>No products liked.</p>
+          </div>
+        )}
       </div>
 
       <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
