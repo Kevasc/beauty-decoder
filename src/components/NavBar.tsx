@@ -71,7 +71,7 @@ const NavBar = () => {
           Decoder
         </Link>
         <Link
-          href="/likedProducts"
+          href="/liked-products"
           onClick={() => {
             setIsOpen(false);
           }}
@@ -81,12 +81,12 @@ const NavBar = () => {
           My Products
         </Link>
         <Link
-          href="/about"
+          href="/contact"
           onClick={() => {
             setIsOpen(false);
           }}
           className="py-4 menu-item font-mono text-neutral-900"
-          id="about"
+          id="contact"
         >
           Contact
         </Link>
