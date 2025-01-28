@@ -8,17 +8,17 @@ const Homepage = () => {
   return (
     <div
       data-testid="homepage_container"
-      className="min-h-screen flex flex-col items-center justify-center"
+      className="min-h-screen flex flex-col items-center"
     >
-      <div className="flex w-full justify-end">
+      <div className="flex w-full justify-end gap-4 pt-4">
         <button
-          className=" hover:text-button-primary-active text-slate-900 font-mono py-2 px-4 rounded-full"
+          className=" hover:text-button-primary-active border text-slate-900 font-mono py-2 px-4 rounded-full"
           type="button"
         >
           Sign up
         </button>
         <button
-          className=" bg-button-primary-active hover:text-white font-mono py-2 px-4 mx-3 rounded-full"
+          className=" bg-button-primary-active hover:bg-purple-400 text-white font-mono py-2 px-4 mr-4 rounded-full"
           type="button"
         >
           Login
@@ -53,15 +53,16 @@ const Homepage = () => {
           >
             Decode
           </Link>
+
           <Link
             className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:bg-button-primary-dark hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
-            href="/about"
+            href="/contact"
           >
             Contact
           </Link>
           <Link
             className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:bg-button-primary-dark hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
-            href="/likedProducts"
+            href="/liked-products"
           >
             My Products
           </Link>
