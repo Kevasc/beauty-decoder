@@ -3,7 +3,7 @@ import { ProductDetail } from "@/api/api";
 import { DetailsCard } from "@/components/DetailsCard";
 import DetailsModalContent from "@/components/DetailsModalContent";
 import Modal from "@/components/Modal";
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 const LikedProducts: React.FC = () => {
