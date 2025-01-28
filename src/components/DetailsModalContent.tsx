@@ -47,17 +47,21 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
   console.log("current producs ", currentProduct);
 
   return (
-    <div className=" text-gray-900 flex-col items-center bg-white max-w-{100px} p-10 m-2 rounded-lg max-h-[60vh] overflow-auto">
-      <h3 className="text-3xl flex justify-center pb-5 font-semibold">
-        {currentProduct.brand?.toUpperCase() || "Brand not available"}
-      </h3>
+    <div className="text-gray-900 flex-col justify-center text-center items-center bg-white pt-4 rounded-lg max-h-[60vh] overflow-auto mb-20">
+      <div className="w-full flex justify-center mb-4">
+        <div className="bg-stone-100 rounded-full w-fit px-8 py-4  self-center">
+          <h3 className="text-3xl font-semibold">
+            {currentProduct.brand?.toUpperCase() || "Brand not available"}
+          </h3>
+        </div>
+      </div>
       {currentProduct.image_link && (
         <img
           height={250}
           width={250}
           src={currentProduct.api_featured_image}
           alt={currentProduct.name || "product image"}
-          className="my-3 border-fuchsia-800-950 mx-auto"
+          className="my-3 mx-auto"
         />
       )}
       <div className="items-center gap-4 flex flex-col">
@@ -79,7 +83,7 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
           {creationDate && <p>Created On: {creationDate}</p>}
         </div>
       </div>
-      <div className="flex items-center justify-center p-6 relative bottom-4">
+      <div className="flex items-center justify-center p-2 bottom-0 absolute w-full bg-white border-t">
         <button
           className="bg-button-primary text-white active:bg-purple-900 font-bold uppercase text-sm px-6 py-3 rounded  mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
