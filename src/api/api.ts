@@ -23,7 +23,7 @@ export const getProducts = async (
 
 export type ProductDetail = {
   api_featured_image: string;
-  brand: string;
+  brand: string | null;
   category: null | string;
   created_at: string;
   currency: null | string;
@@ -38,7 +38,7 @@ export type ProductDetail = {
   product_link: string;
   product_type: string;
   rating: number;
-  tag_list: [];
+  tag_list: [] | string[];
   updated_at: string;
   website_link: string;
 };
