@@ -14,7 +14,7 @@ const Modal = ({ children, isOpen, setIsOpen }: ModalProps) => {
           <div className="justify-center items-center flex overflow-x-scroll font-mono max-h-overflow-y-auto fixed w-full inset-0 z-50 outline-none focus:outline-none">
             <div className="border-0 rounded-lg shadow-lg relative flex flex-col max-w-3xl bg-white outline-none focus:outline-none justify-center items-center">
               <button
-                className="p-1 ml-auto bg-transparent border-0 text-black  float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                 onClick={() => setIsOpen(false)}
               >
                 <span
@@ -27,7 +27,7 @@ const Modal = ({ children, isOpen, setIsOpen }: ModalProps) => {
               {children}
             </div>
           </div>
-
+          {/* this is not an empty div! it sets the background to a darker color when a product is opened and makes the modal pop  */}
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}

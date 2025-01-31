@@ -4,7 +4,7 @@ import "react-awesome-button/dist/styles.css";
 
 const Contact: React.FC = () => {
   return (
-    <div className="flex flex-col font-mono items-center justify-center">
+    <div className="flex flex-col font-mono text-slate-900 items-center justify-center">
       <span className="w-full flex justify-center p-2 m-2 text-7xl">
         About me
       </span>

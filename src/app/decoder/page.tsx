@@ -40,7 +40,7 @@ const staticCategoryArray: Product[] = [
   { name: "Nail Polish", img: NailPolish },
 ];
 
-//The React.FC type annotation specifies that it is a React functional component
+//The React.FC type specifies that this is a react functional component
 const Decoder: React.FC = () => {
   // this initializes as an empty array. The state can hold either an array of ProductDetail, an empty array, or undefined
   const [productDetailsList, setProductDetailsList] = useState<
@@ -65,9 +65,8 @@ const Decoder: React.FC = () => {
       cleanedProductType,
       selectedFiltersList
     );
-
+    // added ? in so if nothing comes back then error is not thrown
     apiResult?.sort((a, b) => {
-      // added ? in so if nothing comes back then error is not thrown
       if (a.brand === null || b.brand === null) {
         // added this check in as the else if return statement had a typing error, so this ensures that if a/b.brand = null, it will always return 1
         return 1;
@@ -88,11 +87,8 @@ const Decoder: React.FC = () => {
     return (
       //productCard gets data from the seperate component page, ProductCard
       <ProductCard
-        //A unique key for React's reconciliation process using index(i)
         key={i}
-        //Passing the current product object to the ProductCard
         product={product}
-        //An inline function that calls getProductsApi with the product's name when the card is clicked
         onClick={() => {
           getProductsApi(product.name);
           ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -103,9 +99,8 @@ const Decoder: React.FC = () => {
 
   //the question mark checks if productDetailsList (an array of product data) exists. If it does, it maps over each product in the list
   const specificProducts: JSX.Element[] | undefined = productDetailsList?.map(
-    //For each product, it returns a DetailsCard component, passing in makeupDetailData (containing details contact that specific product).
+    //For each product, it returns a DetailsCard component, passing in makeupDetailData
     (product: ProductDetail, i: number): JSX.Element => {
-      //Returns a JSX element for each product
       //The key attribute is set to i, the index of the product, ensuring each element is uniquely identifiable.
       return (
         <DetailsCard
@@ -130,24 +125,25 @@ const Decoder: React.FC = () => {
 
   return (
     <div>
-      <span className="w-full font-mono flex justify-center text-7xl">
+      <span className="w-full flex font-mono text-slate-900 justify-center p-2 m-2 text-7xl">
         Decoder
       </span>
-      <span className="font-mono text-center text-slate-900 p-2 m-2 text-1xl flex justify-center">
+      <span className="flex  justify-center text-center font-mono text-slate-900 p-2 m-2">
         Filter products by selecting one or more options.
         <br />
+        {/* &apos; is what i use to make sure apostrophes don't cause an error */}
         Want to see everything? Just click &apos;Go.&apos;
         <br />
         Explore categories to find even more products!
       </span>
-      <div className="flex justify-center p-4 rounded-sm ">
+      <div className="flex justify-center p-4 rounded-sm">
         <SelectedFilters
           selectedFilters={selectedFiltersList}
           toggleFilter={toggleFilter}
         />
       </div>
 
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center font-mono ">
         {filtersPicked === false ? (
           <div className="flex flex-row items-center p-3">
             <FilterGridMosaic
@@ -155,7 +151,7 @@ const Decoder: React.FC = () => {
               toggleFilter={toggleFilter}
             />
             <button
-              className="bg-purple-800 text-white hover:bg-purple-900 h-40 w-40 m-3 ml-14 font-mono flex justify-center items-center font-bold rounded-full cursor-pointer"
+              className="bg-purple-800 text-white hover:bg-purple-900 h-40 w-40 m-3 ml-14 mb-10 flex justify-center items-center font-bold rounded-full cursor-pointer"
               type="button"
               onClick={() => setFiltersPicked(true)}
             >
@@ -169,7 +165,7 @@ const Decoder: React.FC = () => {
                 {productCards}
               </div>
               <button
-                className="bg-purple-800 text-white hover:bg-purple-900 h-40 w-40 m-1 font-mono flex justify-center items-center font-bold rounded-full cursor-pointer"
+                className="bg-purple-800 text-white hover:bg-purple-900 h-40 w-40  ml-14 m-1 flex justify-center items-center font-bold rounded-full cursor-pointer"
                 type="button"
                 onClick={() => setFiltersPicked(false)}
               >

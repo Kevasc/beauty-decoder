@@ -48,19 +48,19 @@ const Homepage = () => {
 
         <div className="flex gap-4 font-mono mt-6">
           <Link
-            className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:bg-button-primary-dark hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
+            className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
             href="/decoder"
           >
             Decode
           </Link>
           <Link
-            className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:bg-button-primary-dark hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
+            className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
             href="/liked-products"
           >
             My Products
           </Link>
           <Link
-            className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:bg-button-primary-dark hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
+            className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
             href="/contact"
           >
             Contact
