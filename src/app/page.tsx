@@ -26,6 +26,7 @@ const Homepage = () => {
       </div>
       <div className="container flex flex-col items-center justify-center mx-auto">
         <Image
+          data-testid="home_logo"
           src={purpleLogo}
           width={700}
           height={700}
@@ -33,6 +34,7 @@ const Homepage = () => {
         ></Image>
         <div className="font-mono text-2xl font-normal text-neutral-900 flex items-center h-16 p-4 m-2 justify-center">
           <Typewriter
+            data-testid="homepage_description"
             onInit={(typewriter) => {
               typewriter
                 .typeString(
@@ -48,18 +50,21 @@ const Homepage = () => {
 
         <div className="flex gap-4 font-mono mt-6">
           <Link
+            data-testid="link_button_decode"
             className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
             href="/decoder"
           >
             Decode
           </Link>
           <Link
+            data-testid="link_button_products"
             className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
             href="/liked-products"
           >
             My Products
           </Link>
           <Link
+            data-testid="link_button_contact"
             className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
             href="/contact"
           >

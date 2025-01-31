@@ -10,39 +10,27 @@ describe("Homepage", () => {
 
     expect(homepageContainer).toBeInTheDocument();
   });
-
-  it("renders a top line of the heading", () => {
+  it("renders a logo", () => {
     render(<Homepage />);
 
-    const headingTop = screen.getByTestId("heading_top_line");
+    const homeLogo = screen.getByTestId("home_logo");
 
-    expect(headingTop).toHaveTextContent("BEAUTY");
+    expect(homeLogo).toBeInTheDocument();
   });
 
-  it("renders a bottom line of the heading", () => {
+  it("renders a link", () => {
     render(<Homepage />);
-
-    const headingBottom = screen.getByTestId("heading_bottom_line");
-
-    expect(headingBottom).toHaveTextContent("DECODER");
+    const linkButtonDecode = screen.getByTestId("link_button_decode");
+    expect(linkButtonDecode).toBeInTheDocument();
   });
-
-  it("renders a description of the homepage", () => {
+  it("renders a link", () => {
     render(<Homepage />);
-
-    const homepageDescription = screen.getByTestId("homepage_description");
-
-    expect(homepageDescription).toHaveTextContent(
-      "A simple cosmetics ingredients comparison website"
-    );
+    const linkButtonProducts = screen.getByTestId("link_button_products");
+    expect(linkButtonProducts).toBeInTheDocument();
   });
-
-  it("renders an image", () => {
+  it("renders a link", () => {
     render(<Homepage />);
-    const mainImage = screen.getByTestId("main_image");
-    expect(mainImage).toHaveAttribute(
-      "src",
-      "/_next/image?url=%2Fimg.jpg&w=96&q=75"
-    );
+    const linkButtonContact = screen.getByTestId("link_button_contact");
+    expect(linkButtonContact).toBeInTheDocument();
   });
 });
