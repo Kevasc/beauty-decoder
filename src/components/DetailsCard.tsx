@@ -17,10 +17,11 @@ export const DetailsCard = ({
   const nameLowerCase =
     makeupDetailData.name?.toLowerCase() || "Name not available";
   const nameFirstLetter = nameLowerCase.charAt(0).toUpperCase();
-  const nameFinalForm = nameFirstLetter + nameLowerCase.slice(1);
+  // the replace uses a global flag to replace more than one character
+  const nameFinalForm =
+    nameFirstLetter + nameLowerCase.slice(1).replace(/[;&]/g, " ");
   const dispatch = useDispatch();
   const pathname = usePathname();
-  console.log("pathname = ", pathname);
   return (
     <div
       className="border p-5 text-center font-mono text-black-500 bg-white w-full h-full max-h-[80vh] overflow-y-auto hover:bg-purple-50 rounded-lg hover:border-fuchsia-900 shadow-lg transition-transform transform hover:scale-105 cursor-pointer "
@@ -31,7 +32,7 @@ export const DetailsCard = ({
           <button
             onClick={(e) => {
               e.stopPropagation(); // this stops the onclick on the div above from running
-              dispatch(removeFromLikedList(makeupDetailData.id)); // use id of the product to remove it from the like list
+              dispatch(removeFromLikedList(makeupDetailData.id)); // uses id of the product to remove it from the like list
             }}
             className=" text-pink-400 hover:text-button-primary-hover p-3 bg-white rounded-full"
           >
