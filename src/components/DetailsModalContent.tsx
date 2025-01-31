@@ -1,11 +1,12 @@
 import { ProductDetail } from "@/api/api";
-import { Tooltip as ReactTooltip } from "react-tooltip";
+import { Tooltip } from "react-tooltip";
 import { DateTime } from "luxon";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToLikedList,
   removeFromLikedList,
 } from "@/redux/likedProductsSlice";
+import { RootState } from "@/redux/store/store";
 
 interface DetailsModalContentProps {
   currentProduct: ProductDetail;
@@ -21,18 +22,16 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
           className="min-h-10 min-w-10 border mr-2 rounded-full"
           style={{ backgroundColor: color.hex_value }}
         />
-        <ReactTooltip place="top" effect="solid" id="my-tooltip" />
       </div>
     );
   });
+  const tooltip = <Tooltip id="my-tooltip" />;
   //useSelector pulls the data out from the redux store and displays it, but does not add or remove it from anywhere
-  const likedList: ProductDetail[] = useSelector((state: any) => {
+  const likedList: ProductDetail[] = useSelector((state: RootState) => {
     return state.likedProducts.list;
   });
-
-  // in the next line i will check if likedList contains the current products if it does i will change the button to 'liked'
+  // in the next line i will check if likedList contains the current products
   const isProductInLikedList: boolean = likedList.includes(currentProduct);
-  console.log("is product already liked? ", isProductInLikedList);
   // Format dates using Luxon
   const updatedAt = DateTime.fromISO(currentProduct.updated_at).toLocaleString(
     DateTime.DATETIME_MED_WITH_WEEKDAY
@@ -44,12 +43,11 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
     : null;
 
   const dispatch = useDispatch();
-  console.log("current producs ", currentProduct);
 
   return (
     <div className="text-gray-900 flex-col justify-center text-center items-center bg-white pt-4 rounded-lg max-h-[60vh] overflow-auto mb-20">
       <div className="w-full flex justify-center mb-4">
-        <div className="bg-stone-100 rounded-full w-fit px-8 py-4  self-center">
+        <div className="bg-purple-50 rounded-full w-fit px-8 py-4  self-center">
           <h3 className="text-3xl font-semibold">
             {currentProduct.brand?.toUpperCase() || "Brand not available"}
           </h3>
@@ -110,6 +108,7 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
           {isProductInLikedList === true ? "liked!" : "like"}
         </button>
       </div>
+      {tooltip}
     </div>
   );
 };

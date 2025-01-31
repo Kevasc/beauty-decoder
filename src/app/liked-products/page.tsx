@@ -3,14 +3,12 @@ import { ProductDetail } from "@/api/api";
 import { DetailsCard } from "@/components/DetailsCard";
 import DetailsModalContent from "@/components/DetailsModalContent";
 import Modal from "@/components/Modal";
+import { RootState } from "@/redux/likedProductsSlice";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 const LikedProducts: React.FC = () => {
-  const likedList: ProductDetail[] = useSelector((state: any) => {
-    return state.likedProducts.list;
-  });
-
+  const likedList = useSelector((state: RootState) => state.likedProducts.list);
   const [isOpen, setIsOpen] = useState(false);
   const [currentProduct, setCurrentProduct] = useState<ProductDetail | null>(
     null
@@ -22,13 +20,13 @@ const LikedProducts: React.FC = () => {
 
   return (
     <div>
-      <span className="font-mono text-slate-900 p-4 m-4 text-6xl flex justify-center">
+      <span className="font-mono text-slate-900 p-2 m-2 text-7xl flex justify-center">
         My Liked Products
       </span>
-      <span className="font-mono text-center text-slate-900 p-4 m-4 text-1xl flex justify-center">
+      <span className="font-mono text-center text-slate-900 p-2 m-2 text-1xl flex justify-center">
         Here are all your liked products!
         <br />
-        Click on a product to learn more, or remove it by clicking the cross.
+        Click on a product to learn more, or remove it using the bin.
       </span>
 
       <div className="grid grid-cols-3 gap-6 p-4 m-4">
@@ -41,8 +39,8 @@ const LikedProducts: React.FC = () => {
             />
           ))
         ) : (
-          <div className="col-span-full text-center text-gray-500">
-            <p>No products liked.</p>
+          <div className="col-span-full text-center pt-10 text-gray-500">
+            <p>No products currently liked.</p>
           </div>
         )}
       </div>
