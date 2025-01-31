@@ -8,17 +8,24 @@ const Contact: React.FC = () => {
       <span className="w-full flex justify-center p-2 m-2 text-7xl">
         About me
       </span>
-      <span className="flex justify-center text-center m-3 p-3">
+      <span className="text-center m-3 p-3">
         Hi, I&apos;m Jordan! <br />
         <br />
         As a beauty enthusiast, I understand how important it is to find
         products that align with specific ingredient concerns and allergen
         sensitivities. <br />
         That’s why I created a website that allows users to filter beauty
-        products based on their unique needs.
-        <br /> I discovered the Makeup API, which, while not the most
-        up-to-date, serves as a great starting point for testing this concept in
-        a real-world setting.
+        products based on their unique needs. I discovered the {""}
+        <a
+          href="https://makeup-api.herokuapp.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className=" underline"
+        >
+          Makeup API
+        </a>
+        , which, while not the most up-to-date, serves as a great starting point
+        for testing this concept in a real-world setting.
         <br /> My goal is to build a user-friendly platform that makes it easier
         for people to discover beauty products that truly work for them. <br />
         <br /> If you have any thoughts or feedback, I&apos;d love to hear them!
