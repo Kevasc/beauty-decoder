@@ -4,7 +4,7 @@ export const getProducts = async (
 ): Promise<ProductDetail[] | undefined> => {
   try {
     const response = await fetch(
-      `http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${product}&product_tags=${filters}`,
+      `https://makeup-api.herokuapp.com/api/v1/products.json?product_type=${product}&product_tags=${filters}`,
       {
         method: "GET",
       }
