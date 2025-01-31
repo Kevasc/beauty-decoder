@@ -55,7 +55,7 @@ const Decoder: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
-  //The getProductsApi function is responsible for fetching product details from an API.
+  //The getProductsApi function is responsible for fetching product details based on type from the API.
   const getProductsApi = async (productType: string) => {
     setIsLoading(true);
     //This line cleans the product type string by converting it to lowercase and replacing spaces with underscores, to format it for API calls without affecting how its displayed
@@ -65,8 +65,13 @@ const Decoder: React.FC = () => {
       cleanedProductType,
       selectedFiltersList
     );
+
     apiResult?.sort((a, b) => {
-      if (a.brand > b.brand) {
+      // added ? in so if nothing comes back then error is not thrown
+      if (a.brand === null || b.brand === null) {
+        // added this check in as the else if return statement had a typing error, so this ensures that if a/b.brand = null, it will always return 1
+        return 1;
+      } else if (a.brand > b.brand) {
         return 1;
       } else {
         return -1;
@@ -125,10 +130,13 @@ const Decoder: React.FC = () => {
 
   return (
     <div>
-      <span className="font-mono text-center text-slate-900 p-4 m-4 text-1xl flex justify-center">
+      <span className="w-full font-mono flex justify-center text-7xl">
+        Decoder
+      </span>
+      <span className="font-mono text-center text-slate-900 p-2 m-2 text-1xl flex justify-center">
         Filter products by selecting one or more options.
         <br />
-        Want to see everything? Just click 'Go.'
+        Want to see everything? Just click &apos;Go.&apos;
         <br />
         Explore categories to find even more products!
       </span>
@@ -141,7 +149,7 @@ const Decoder: React.FC = () => {
 
       <div className="flex flex-col items-center justify-center">
         {filtersPicked === false ? (
-          <div className="flex flex-row items-center p-10">
+          <div className="flex flex-row items-center p-3">
             <FilterGridMosaic
               selectedFilters={selectedFiltersList}
               toggleFilter={toggleFilter}
