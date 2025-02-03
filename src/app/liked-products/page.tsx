@@ -20,7 +20,7 @@ const LikedProducts: React.FC = () => {
 
   return (
     <div>
-      <span className="font-mono text-slate-900 p-2 m-2 text-7xl flex justify-center">
+      <span className="font-mono text-slate-900 p-2 m-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl flex justify-center">
         My Liked Products
       </span>
       <span className="font-mono text-center text-slate-900 p-2 m-2 text-1xl flex justify-center">
@@ -29,7 +29,7 @@ const LikedProducts: React.FC = () => {
         Click on a product to learn more, or remove it using the bin.
       </span>
 
-      <div className="grid grid-cols-3 gap-6 p-4 m-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 p-4 m-4">
         {likedList && likedList.length > 0 ? (
           likedList.map((product: ProductDetail, i: number) => (
             <DetailsCard

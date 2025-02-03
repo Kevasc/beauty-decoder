@@ -134,7 +134,7 @@ const Decoder: React.FC = () => {
         {/* &apos; is what i use to make sure apostrophes don't cause an error */}
         Want to see everything? Just click &apos;Go.&apos;
         <br />
-        Explore categories to find even more products!
+        Explore categories and discover your new favorite product!!
       </span>
       <div className="flex justify-center p-4 rounded-sm">
         <SelectedFilters
@@ -143,15 +143,15 @@ const Decoder: React.FC = () => {
         />
       </div>
 
-      <div className="flex flex-col items-center justify-center font-mono ">
+      <div className="flex flex-col items-center justify-center font-mono">
         {filtersPicked === false ? (
-          <div className="flex flex-row items-center p-3">
+          <div className="flex flex-col lg:flex-row  items-center p-3">
             <FilterGridMosaic
               selectedFilters={selectedFiltersList}
               toggleFilter={toggleFilter}
             />
             <button
-              className="bg-purple-800 text-white hover:bg-purple-900 h-40 w-40 m-3 ml-14 mb-10 flex justify-center items-center font-bold rounded-full cursor-pointer"
+              className="bg-purple-800 text-white  hover:bg-purple-900 h-40 w-40 m-3 lg:ml-14 sm:m-5 sm:mb-10 flex justify-center items-center font-bold rounded-full cursor-pointer"
               type="button"
               onClick={() => setFiltersPicked(true)}
             >
@@ -160,12 +160,12 @@ const Decoder: React.FC = () => {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center ">
-            <div className="flex flex-row items-center">
+            <div className="flex flex-col lg:flex-row items-center">
               <div className="grid m-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 p-5 flex-grow">
                 {productCards}
               </div>
               <button
-                className="bg-purple-800 text-white hover:bg-purple-900 h-40 w-40  ml-14 m-1 flex justify-center items-center font-bold rounded-full cursor-pointer"
+                className="bg-purple-800 text-white hover:bg-purple-900 h-40 w-40 sm:ml-0 sm:mt-5 lg:ml-14 m-3 flex justify-center items-center font-bold rounded-full cursor-pointer"
                 type="button"
                 onClick={() => setFiltersPicked(false)}
               >
