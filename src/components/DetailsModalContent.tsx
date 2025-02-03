@@ -7,6 +7,7 @@ import {
   removeFromLikedList,
 } from "@/redux/likedProductsSlice";
 import { RootState } from "@/redux/store/store";
+import Link from "next/link";
 
 interface DetailsModalContentProps {
   currentProduct: ProductDetail;
@@ -86,9 +87,9 @@ const DetailsModalContent = ({ currentProduct }: DetailsModalContentProps) => {
           className="bg-button-primary text-white active:bg-purple-900 font-bold uppercase text-sm px-6 py-3 rounded  mr-1 mb-1 ease-linear transition-all duration-150"
           type="button"
         >
-          <a href={currentProduct.website_link} target="_blank">
+          <Link href={currentProduct.website_link} target="_blank">
             Buy
-          </a>
+          </Link>
         </button>
         <button
           className="bg-button-primary text-white active:bg-purple-900 font-bold uppercase text-sm px-6 py-3 rounded mr-1 mb-1 ease-linear transition-all duration-150"
