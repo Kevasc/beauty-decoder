@@ -12,6 +12,15 @@ I came across the [Makeup API](https://makeup-api.herokuapp.com/), and while itâ
 - Keep track of products you love with a personal like list
 - Most products include swatches with a handy tooltip displaying the exact shade & name
 
+  
+
+## Screenshots
+
+![](https://github.com/user-attachments/assets/7abd93e4-1308-41ba-a03f-b6db2a13b598)
+
+![](https://github.com/user-attachments/assets/3e019d0d-3657-4b52-874f-f4419a15003b)
+
+
 
 ## Tools used 
 
