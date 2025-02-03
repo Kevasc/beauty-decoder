@@ -10,7 +10,7 @@ const Homepage = () => {
       data-testid="homepage_container"
       className="min-h-screen flex flex-col items-center"
     >
-      <div className="flex w-full justify-end gap-4 m-4 pt-4">
+      <div className="flex w-full justify-end gap-4 m-5 pt-4">
         <button
           className=" hover:text-button-primary-active border text-slate-900 font-mono py-2 px-4 rounded-full"
           type="button"

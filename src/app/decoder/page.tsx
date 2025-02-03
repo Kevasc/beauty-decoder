@@ -134,7 +134,7 @@ const Decoder: React.FC = () => {
         {/* &apos; is what i use to make sure apostrophes don't cause an error */}
         Want to see everything? Just click &apos;Go.&apos;
         <br />
-        Explore categories and discover your new favorite product!!
+        Explore categories and discover your new favorite product!
       </span>
       <div className="flex justify-center p-4 rounded-sm">
         <SelectedFilters
