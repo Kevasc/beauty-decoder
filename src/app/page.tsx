@@ -48,7 +48,7 @@ const Homepage = () => {
           />
         </div>
 
-        <div className="flex gap-4 font-mono mt-6 flex-wrap justify-center sm:pt-10 md:flex-nowrap">
+        <div className="flex gap-4 font-mono mt-6 mb-6 flex-wrap justify-center sm:pt-10 md:flex-nowrap">
           <Link
             data-testid="link_button_decode"
             className="bg-button-primary-light flex border-2 justify-center items-center p-10 text-lg rounded-md h-16 w-52 hover:border-2 hover:border-fuchsia-900 active:bg-button-primary"
