@@ -9,7 +9,7 @@ const Contact: React.FC = () => {
         About me
       </span>
       <span className="text-center m-3 p-3">
-        Hi, I&apos;m Jordan! <br />
+        Hello! <br />
         <br />
         As a beauty enthusiast, I understand how important it is to find
         products that align with specific ingredient concerns and allergen
